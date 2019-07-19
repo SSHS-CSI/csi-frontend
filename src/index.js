@@ -1,8 +1,8 @@
+require("typeface-roboto");
+
 const React = require("react");
 const ReactDOM = require("react-dom");
 
-const App = () => (
-    <div>Hello, World!</div>
-);
+const App = require("./app");
 
 ReactDOM.render(<App />, document.getElementById("root"));

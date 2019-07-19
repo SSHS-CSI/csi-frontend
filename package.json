@@ -11,9 +11,13 @@
         "clean": "rm -rf .cache dist"
     },
     "dependencies": {
+        "@material-ui/core": "^4.2.1",
+        "@material-ui/icons": "^4.2.1",
+        "clsx": "^1.0.4",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
-        "react-router-dom": "^5.0.1"
+        "react-router-dom": "^5.0.1",
+        "typeface-roboto": "^0.0.75"
     },
     "devDependencies": {
         "@types/react": "^16.8.23",
