@@ -48,7 +48,7 @@ module.exports = ({ teacher, students, assignments, onTeacherClick, onStudentCli
                             {students.map((student, idx) => (
                                 <Chip label={student} icon={<FaceIcon />}
                                       key={student} className={classes.chip}
-                                      onClick={e => onStudentClick(e, idx)} />
+                                      onClick={onStudentClick && (e => onStudentClick(e, idx))} />
                             ))}
                         </TableCell>
                     </TableRow>
