@@ -14,11 +14,6 @@ const SchoolIcon = require("@material-ui/icons/School").default;
 const ClosableDialog = require("./closable-dialog.js");
 
 const useStyles = makeStyles(theme => ({
-    closeButton: {
-        position: "absolute",
-        right: theme.spacing(1),
-        top: theme.spacing(1)
-    },
     chip: {
         margin: theme.spacing(0.5)
     }
