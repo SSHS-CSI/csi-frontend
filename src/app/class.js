@@ -61,7 +61,7 @@ module.exports = ({ teacher, students, assignments, onTeacherClick, onStudentCli
                         <TableCell variant="head">마감</TableCell>
                     </TableRow>
                     {assignments.map(({ title, deadline }, idx) => (
-                        <TableRow hover onClick={e => onAssignmentClick(e, idx)}>
+                        <TableRow hover onClick={e => onAssignmentClick(e, idx)} key={title}>
                             <TableCell>{title}</TableCell>
                             <TableCell>
                                 {deadline.toLocaleDateString()}
