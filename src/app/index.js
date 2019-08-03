@@ -1,17 +1,45 @@
 const React = require("react");
 const { useState } = React;
 
+const { makeStyles } = require("@material-ui/core/styles");
+
+const CssBaseline = require("@material-ui/core/CssBaseline").default;
+const Grid = require("@material-ui/core/Grid").default;
+const Paper = require("@material-ui/core/Paper").default;
+
 const AppBar = require("./appbar.js");
 const Drawer = require("./drawer.js");
 const Class = require("./class.js");
 const Assignment = require("./assignment.js");
+const LectureSelector = require("./lecture-selector.js");
+
+const useStyles = makeStyles(theme => ({
+    root: {
+        padding: theme.spacing(2)
+    },
+    mainArea: {
+        marginTop: theme.spacing(6),
+        padding: theme.spacing(1),
+        minHeight: `calc(100vh - ${theme.spacing(8)}px)`
+    },
+    fullHeightPaper: {
+        height: "100%"
+    },
+    timeTableTile: {
+        padding: theme.spacing(2)
+    }
+}));
 
 const App = () => {
+    const classes = useStyles();
+
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isClassDialogOpen, setIsClassDialogOpen] = useState(false);
-    const [isAssignmentDialogOpen, setIsAssignmentDialogOpen] = useState(true);
+    const [isAssignmentDialogOpen, setIsAssignmentDialogOpen] = useState(false);
+    const [currentLectures, setCurrentLectures] = useState([]);
     return (
-        <div>
+        <div className={classes.root}>
+            <CssBaseline />
             <AppBar onMenuClick={() => setIsDrawerOpen(true)} />
             <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
             <Class title="객체지향" open={isClassDialogOpen}
@@ -27,6 +55,18 @@ const App = () => {
                             deadline: new Date("Sun Jul 30 2019"),
                             author: "조성빈"
                         }} />
+            <Grid container spacing={3} className={classes.mainArea}>
+                <Grid item xs={3}>
+                    <Paper className={classes.fullHeightPaper}>
+                        <LectureSelector subjects={[
+                            { name: "수학", lectures: ["수학 I", "수학 II", "수학 III"] },
+                            { name: "물리", lectures: ["물리 I", "물리 II"] }
+                        ]} currentLectures={currentLectures} setCurrentLectures={setCurrentLectures} />
+                    </Paper>
+                </Grid>
+                <Grid item xs={9}>
+                </Grid>
+            </Grid>
         </div>
     );
 };
