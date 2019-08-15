@@ -12,6 +12,7 @@ const Drawer = require("./drawer.js");
 const Class = require("./class.js");
 const Assignment = require("./assignment.js");
 const LectureSelector = require("./lecture-selector.js");
+const TimeTable = require("./time-table.js");
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -25,10 +26,63 @@ const useStyles = makeStyles(theme => ({
     fullHeightPaper: {
         height: "100%"
     },
+    fullHeightTimeTable: {
+        height: "100%"
+    },
     timeTableTile: {
         padding: theme.spacing(2)
     }
 }));
+
+const timeTable = [{
+    name: "중국어 II",
+    subject: "외국어",
+    times: [{
+        weekday: 1,
+        start: 2,
+        end: 2
+    }, {
+        weekday: 4,
+        start: 1,
+        end: 1
+    }],
+}, {
+    name: "지구과학 II",
+    subject: "지학",
+    times: [{
+        weekday: 1,
+        start: 3,
+        end: 4
+    }, {
+        weekday: 4,
+        start: 5,
+        end: 5
+    }]
+}, {
+    name: "객체지향프로",
+    subject: "정보",
+    times: [{
+        weekday: 1,
+        start: 5,
+        end: 5
+    }, {
+        weekday: 2,
+        start: 1,
+        end: 2
+    }]
+}, {
+    name: "수학 IV",
+    subject: "수학",
+    times: [{
+        weekday: 1,
+        start: 6,
+        end: 7
+    }, {
+        weekday: 3,
+        start: 1,
+        end: 2
+    }]
+}];
 
 const App = () => {
     const classes = useStyles();
@@ -65,6 +119,9 @@ const App = () => {
                     </Paper>
                 </Grid>
                 <Grid item xs={9}>
+                    <Paper className={classes.fullHeightPaper}>
+                        <TimeTable className={classes.fullHeightTimeTable} timeTable={timeTable} />
+                    </Paper>
                 </Grid>
             </Grid>
         </div>
