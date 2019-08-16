@@ -1,7 +1,4 @@
 const React = require("react");
-const { useState } = React;
-
-const { makeStyles } = require("@material-ui/core/styles");
 
 const List = require("@material-ui/core/List").default;
 
