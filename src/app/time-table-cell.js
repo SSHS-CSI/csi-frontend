@@ -4,6 +4,7 @@ const { makeStyles } = require("@material-ui/core/styles");
 const Color = require("color");
 
 const Typography = require("@material-ui/core/Typography").default;
+const Card = require("@material-ui/core/Card").default;
 
 const CssGridCell = require("./css-grid-cell.js");
 
@@ -23,30 +24,35 @@ const genColor = subject => {
     }
 };
 
-const useStyles = makeStyles({
-    cell: ({ subject }) => ({
-        backgroundColor: Color(genColor(subject)).toString(),
+const useStyles = makeStyles(theme => ({
+    cell: {
         height: "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        color: Color(genColor(subject)).isDark() ? "white" : "black",
-        "&:hover": {
-            backgroundColor: Color(genColor(subject)).darken(0.2).toString(),
-            color: Color(genColor(subject)).darken(0.3).isDark() ? "white" : "black",
-        }
-    })
-});
+        position: "relative",
+    },
+    bar: ({ subject }) => ({
+        backgroundColor: Color(genColor(subject)).toString(),
+        position: "absolute",
+        left: theme.spacing(0.5),
+        right: theme.spacing(0.5),
+        top: theme.spacing(0.5),
+        height: theme.spacing(0.5),
+        borderRadius: theme.spacing(0.5)
+    }),
+}));
 
 module.exports = ({ weekday, start, end, name, ...props }) => {
     const classes = useStyles(props);
     return (
         <CssGridCell left={weekday} top={start} height={end - start + 1}>
-            <div className={classes.cell}>
+            <Card className={classes.cell}>
                 <Typography variant="body1">
                     {name}
                 </Typography>
-            </div>
+                <div className={classes.bar} />
+            </Card>
         </CssGridCell>
     );
 };

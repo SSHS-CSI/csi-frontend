@@ -119,9 +119,9 @@ const App = () => {
                     </Paper>
                 </Grid>
                 <Grid item xs={9}>
-                    <Paper className={classes.fullHeightPaper}>
+                    <div className={classes.fullHeightPaper}>
                         <TimeTable className={classes.fullHeightTimeTable} timeTable={timeTable} />
-                    </Paper>
+                    </div>
                 </Grid>
             </Grid>
         </div>
