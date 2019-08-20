@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-module.exports = ({ title, onClose, children, ...props }) => {
+module.exports = ({ title, onClose, onConfirm, onCancel, children, ...props }) => {
     const classes = useStyles();
     return (
         <Dialog scroll="paper" {...props}>
@@ -33,7 +33,8 @@ module.exports = ({ title, onClose, children, ...props }) => {
                 {children}
             </DialogContent>
             <DialogActions>
-                <Button onClick={onClose}>확인</Button>
+                {onCancel && <Button onClick={onCancel}>취소</Button>}
+                <Button onClick={onConfirm || onClose}>확인</Button>
             </DialogActions>
         </Dialog>
     );
