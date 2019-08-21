@@ -6,7 +6,6 @@ const { makeStyles } = require("@material-ui/core/styles");
 const CssBaseline = require("@material-ui/core/CssBaseline").default;
 const Grid = require("@material-ui/core/Grid").default;
 const Paper = require("@material-ui/core/Paper").default;
-const Card = require("@material-ui/core/Card").default;
 
 const AppBar = require("./appbar.js");
 const Drawer = require("./drawer.js");
@@ -91,7 +90,7 @@ const App = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isClassDialogOpen, setIsClassDialogOpen] = useState(false);
     const [isAssignmentDialogOpen, setIsAssignmentDialogOpen] = useState(false);
-    const [currentLectures, setCurrentLectures] = useState([]);
+
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -116,13 +115,13 @@ const App = () => {
                         <LectureSelector subjects={[
                             { name: "수학", lectures: ["수학 I", "수학 II", "수학 III"] },
                             { name: "물리", lectures: ["물리 I", "물리 II"] }
-                        ]} currentLectures={currentLectures} setCurrentLectures={setCurrentLectures} />
+                        ]} />
                     </Paper>
                 </Grid>
                 <Grid item xs={9}>
-                    <Card className={classes.fullHeightPaper}>
+                    <div className={classes.fullHeightPaper}>
                         <TimeTable className={classes.fullHeightTimeTable} timeTable={timeTable} />
-                    </Card>
+                    </div>
                 </Grid>
             </Grid>
         </div>

@@ -24,19 +24,16 @@ module.exports = ({ name, lectures, onClick, ...props }) => {
 
     return (
         <>
-            <ListItem button onClick={e => setIsOpen(isOpen => !isOpen)} {...props} divider>
+            <ListItem button onClick={() => setIsOpen(isOpen => !isOpen)} {...props} divider>
                 <ListItemText primary={name} />
                 {isOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             </ListItem>
             <Collapse in={isOpen} timeout="auto" unmountOnExit>
                 <List disablePadding>
                     {lectures.map(lecture => (
-                        <>
-                            <ListItem button key={lecture} onClick={onClick && (e => onClick(e, lecture))} className={classes.nested} divider>
-                                <ListItemText primary={lecture} />
-                            </ListItem>
-                            <ClassSelector lecture={lecture} />
-                        </>
+                        <ListItem button key={lecture} onClick={onClick && (e => onClick(e, lecture))} className={classes.nested} divider>
+                            <ListItemText primary={lecture} />
+                        </ListItem>
                     ))}
                 </List>
             </Collapse>
