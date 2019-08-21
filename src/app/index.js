@@ -6,6 +6,7 @@ const { makeStyles } = require("@material-ui/core/styles");
 const CssBaseline = require("@material-ui/core/CssBaseline").default;
 const Grid = require("@material-ui/core/Grid").default;
 const Paper = require("@material-ui/core/Paper").default;
+const Card = require("@material-ui/core/Card").default;
 
 const AppBar = require("./appbar.js");
 const Drawer = require("./drawer.js");
@@ -119,9 +120,9 @@ const App = () => {
                     </Paper>
                 </Grid>
                 <Grid item xs={9}>
-                    <div className={classes.fullHeightPaper}>
+                    <Card className={classes.fullHeightPaper}>
                         <TimeTable className={classes.fullHeightTimeTable} timeTable={timeTable} />
-                    </div>
+                    </Card>
                 </Grid>
             </Grid>
         </div>

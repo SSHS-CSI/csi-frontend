@@ -10,6 +10,7 @@ const Collapse = require("@material-ui/core/Collapse").default;
 
 const ExpandLessIcon = require("@material-ui/icons/ExpandLess").default;
 const ExpandMoreIcon = require("@material-ui/icons/ExpandMore").default;
+const ClassSelector = require("./class-selector.js");
 
 const useStyles = makeStyles(theme => ({
     nested: {
@@ -30,9 +31,12 @@ module.exports = ({ name, lectures, onClick, ...props }) => {
             <Collapse in={isOpen} timeout="auto" unmountOnExit>
                 <List disablePadding>
                     {lectures.map(lecture => (
-                        <ListItem button key={lecture} onClick={onClick && (e => onClick(e, lecture))} className={classes.nested} divider>
-                            <ListItemText primary={lecture} />
-                        </ListItem>
+                        <>
+                            <ListItem button key={lecture} onClick={onClick && (e => onClick(e, lecture))} className={classes.nested} divider>
+                                <ListItemText primary={lecture} />
+                            </ListItem>
+                            <ClassSelector lecture={lecture} />
+                        </>
                     ))}
                 </List>
             </Collapse>
