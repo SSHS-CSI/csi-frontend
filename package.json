@@ -8,7 +8,9 @@
         "start": "parcel src/index.html -d dist",
         "watch": "parcel watch src/index.html -d dist",
         "build": "parcel build src/index.html -d dist",
-        "clean": "rm -rf .cache dist"
+        "clean": "rm -rf .cache dist",
+        "check": "eslint '**/*.js'",
+        "fix": "eslint '**/*.js' --fix"
     },
     "dependencies": {
         "@material-ui/core": "^4.2.1",
@@ -25,6 +27,9 @@
         "@types/color": "^3.0.0",
         "@types/react": "^16.8.23",
         "@types/react-dom": "^16.8.4",
-        "@types/react-router-dom": "^4.3.4"
+        "@types/react-router-dom": "^4.3.4",
+        "eslint": "^6.2.1",
+        "eslint-plugin-json": "^1.4.0",
+        "eslint-plugin-react": "^7.14.3"
     }
 }
