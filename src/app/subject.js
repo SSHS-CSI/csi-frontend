@@ -11,13 +11,11 @@ const Collapse = require("@material-ui/core/Collapse").default;
 const ExpandLessIcon = require("@material-ui/icons/ExpandLess").default;
 const ExpandMoreIcon = require("@material-ui/icons/ExpandMore").default;
 
-const useStyles = makeStyles(theme => ({
-    nested: {
-        paddingLeft: theme.spacing(4)
-    }
-}));
+const useStyles = makeStyles(theme => ({ nested: { paddingLeft: theme.spacing(4) } }));
 
-module.exports = ({ name, lectures, onClick, ...props }) => {
+module.exports = ({
+    name, lectures, onClick, ...props
+}) => {
     const classes = useStyles();
     const [isOpen, setIsOpen] = useState(false);
 

@@ -8,13 +8,11 @@ const IconButton = require("@material-ui/core/IconButton").default;
 const MenuIcon = require("@material-ui/icons/Menu").default;
 const Typography = require("@material-ui/core/Typography").default;
 
-const useStyles = makeStyles(theme => ({
-    menu: {
-        marginRight: theme.spacing()
-    }
-}));
+const useStyles = makeStyles(theme => ({ menu: { marginRight: theme.spacing() } }));
 
-module.exports = ({ onMenuClick, ...props }) => {
+module.exports = ({
+    onMenuClick, ...props
+}) => {
     const classes = useStyles();
 
     return (

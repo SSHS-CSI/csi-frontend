@@ -13,13 +13,11 @@ const SchoolIcon = require("@material-ui/icons/School").default;
 
 const ClosableDialog = require("./closable-dialog.js");
 
-const useStyles = makeStyles(theme => ({
-    chip: {
-        margin: theme.spacing(0.5)
-    }
-}));
+const useStyles = makeStyles(theme => ({ chip: { margin: theme.spacing(0.5) } }));
 
-module.exports = ({ teacher, students, assignments, onTeacherClick, onStudentClick, onAssignmentClick, ...props }) => {
+module.exports = ({
+    teacher, students, assignments, onTeacherClick, onStudentClick, onAssignmentClick, ...props
+}) => {
     const classes = useStyles();
     return (
         <ClosableDialog scroll="paper" {...props}>
@@ -31,8 +29,8 @@ module.exports = ({ teacher, students, assignments, onTeacherClick, onStudentCli
                         </TableCell>
                         <TableCell colSpan={2}>
                             <Chip icon={<SchoolIcon />} label={teacher}
-                                  onClick={onTeacherClick}
-                                  className={classes.chip} />
+                                onClick={onTeacherClick}
+                                className={classes.chip} />
                         </TableCell>
                     </TableRow>
                     <TableRow>
@@ -42,20 +40,22 @@ module.exports = ({ teacher, students, assignments, onTeacherClick, onStudentCli
                         <TableCell colSpan={2}>
                             {students.map((student, idx) => (
                                 <Chip label={student} icon={<FaceIcon />}
-                                      key={student} className={classes.chip}
-                                      onClick={onStudentClick && (e => onStudentClick(e, idx))} />
+                                    key={student} className={classes.chip}
+                                    onClick={onStudentClick && (e => onStudentClick(e, idx))} />
                             ))}
                         </TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell component="th" scope="row"
-                                   rowSpan={assignments.length + 1}>
+                            rowSpan={assignments.length + 1}>
                             과제
                         </TableCell>
                         <TableCell variant="head">제목</TableCell>
                         <TableCell variant="head">마감</TableCell>
                     </TableRow>
-                    {assignments.map(({ title, deadline }, idx) => (
+                    {assignments.map(({
+                        title, deadline
+                    }, idx) => (
                         <TableRow hover onClick={e => onAssignmentClick(e, idx)} key={title}>
                             <TableCell>{title}</TableCell>
                             <TableCell>

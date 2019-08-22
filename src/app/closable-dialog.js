@@ -11,15 +11,15 @@ const IconButton = require("@material-ui/core/IconButton").default;
 
 const CloseIcon = require("@material-ui/icons/Close").default;
 
-const useStyles = makeStyles(theme => ({
-    closeButton: {
-        position: "absolute",
-        right: theme.spacing(1),
-        top: theme.spacing(1)
-    }
-}));
+const useStyles = makeStyles(theme => ({ closeButton: {
+    position: "absolute",
+    right: theme.spacing(1),
+    top: theme.spacing(1)
+} }));
 
-module.exports = ({ title, onClose, onConfirm, onCancel, children, ...props }) => {
+module.exports = ({
+    title, onClose, onConfirm, onCancel, children, ...props
+}) => {
     const classes = useStyles();
     return (
         <Dialog scroll="paper" {...props}>

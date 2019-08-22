@@ -5,7 +5,9 @@ const { makeStyles } = require("@material-ui/core/styles");
 const clsx = require("clsx").default;
 
 const useStyles = makeStyles({
-    cell: ({ width, height, top, left, center, area }) => ({
+    cell: ({
+        width, height, top, left, center, area
+    }) => ({
         height: "100%",
         minWidth: 0,
         gridColumnEnd: [["span", width]],
@@ -13,7 +15,7 @@ const useStyles = makeStyles({
         gridColumnStart: left,
         gridRowStart: top,
         textAlign: center,
-        gridArea: area,
+        gridArea: area
     }),
     cellMiddle: {
         display: "inline-flex",
@@ -23,7 +25,18 @@ const useStyles = makeStyles({
     }
 });
 
-module.exports = ({ className, width = 1, height = 1, top, left, middle, center, area, ...props }) => {
-    const classes = useStyles({ className, width, height, top, left, middle, center, area });
+module.exports = ({
+    className, width = 1, height = 1, top, left, middle, center, area, ...props
+}) => {
+    const classes = useStyles({
+        className,
+        width,
+        height,
+        top,
+        left,
+        middle,
+        center,
+        area
+    });
     return <div className={clsx(classes.cell, middle && classes.cellMiddle, className)} {...props} />;
 };

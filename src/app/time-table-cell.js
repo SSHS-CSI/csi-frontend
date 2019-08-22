@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        position: "relative",
+        position: "relative"
     },
     bar: ({ subject }) => ({
         backgroundColor: Color(genColor(subject)).toString(),
@@ -40,10 +40,12 @@ const useStyles = makeStyles(theme => ({
         top: theme.spacing(0.5),
         height: theme.spacing(0.5),
         borderRadius: theme.spacing(0.5)
-    }),
+    })
 }));
 
-module.exports = ({ weekday, start, end, name, ...props }) => {
+module.exports = ({
+    weekday, start, end, name, ...props
+}) => {
     const classes = useStyles(props);
     return (
         <CssGridCell left={weekday} top={start} height={end - start + 1}>

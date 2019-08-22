@@ -15,23 +15,15 @@ const LectureSelector = require("./lecture-selector.js");
 const TimeTable = require("./time-table.js");
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        padding: theme.spacing(2)
-    },
+    root: { padding: theme.spacing(2) },
     mainArea: {
         marginTop: theme.spacing(6),
         padding: theme.spacing(1),
         minHeight: `calc(100vh - ${theme.spacing(8)}px)`
     },
-    fullHeightPaper: {
-        height: "100%"
-    },
-    fullHeightTimeTable: {
-        height: "100%"
-    },
-    timeTableTile: {
-        padding: theme.spacing(2)
-    }
+    fullHeightPaper: { height: "100%" },
+    fullHeightTimeTable: { height: "100%" },
+    timeTableTile: { padding: theme.spacing(2) }
 }));
 
 const timeTable = [{
@@ -45,7 +37,7 @@ const timeTable = [{
         weekday: 4,
         start: 1,
         end: 1
-    }],
+    }]
 }, {
     name: "지구과학 II",
     subject: "지학",
@@ -97,25 +89,28 @@ const App = () => {
             <AppBar onMenuClick={() => setIsDrawerOpen(true)} />
             <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
             <Class title="객체지향" open={isClassDialogOpen}
-                   onClose={() => setIsClassDialogOpen(false)} teacher="박미영"
-                   students={["조성빈", "신기준", "권현우"]} assignments={[{
-                       title: "연습문제 1",
-                       deadline: new Date("Sun Jul 30 2019"),
-                   }]}/>
+                onClose={() => setIsClassDialogOpen(false)} teacher="박미영"
+                students={["조성빈", "신기준", "권현우"]} assignments={[{
+                    title: "연습문제 1",
+                    deadline: new Date("Sun Jul 30 2019")
+                }]}/>
             <Assignment open={isAssignmentDialogOpen} title="과제" onClose={() => setIsAssignmentDialogOpen(false)}
-                        assignment={{
-                            title: "연습문제 1",
-                            content: "연습문제 1의 3번 문제부터 16번 문제까지 풀기",
-                            deadline: new Date("Sun Jul 30 2019"),
-                            author: "조성빈"
-                        }} />
+                assignment={{
+                    title: "연습문제 1",
+                    content: "연습문제 1의 3번 문제부터 16번 문제까지 풀기",
+                    deadline: new Date("Sun Jul 30 2019"),
+                    author: "조성빈"
+                }} />
             <Grid container spacing={3} className={classes.mainArea}>
                 <Grid item xs={3}>
                     <Paper className={classes.fullHeightPaper}>
-                        <LectureSelector subjects={[
-                            { name: "수학", lectures: ["수학 I", "수학 II", "수학 III"] },
-                            { name: "물리", lectures: ["물리 I", "물리 II"] }
-                        ]} currentLectures={currentLectures} setCurrentLectures={setCurrentLectures} />
+                        <LectureSelector subjects={[{
+                            name: "수학",
+                            lectures: ["수학 I", "수학 II", "수학 III"]
+                        }, {
+                            name: "물리",
+                            lectures: ["물리 I", "물리 II"]
+                        }]} currentLectures={currentLectures} setCurrentLectures={setCurrentLectures} />
                     </Paper>
                 </Grid>
                 <Grid item xs={9}>

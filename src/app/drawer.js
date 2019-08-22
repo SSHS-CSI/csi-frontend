@@ -17,25 +17,23 @@ const AssignmentIcon = require("@material-ui/icons/Assignment").default;
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
-    list: {
-        width: drawerWidth
-    },
+    list: { width: drawerWidth },
     listTitle: {
         display: "flex",
         flexGrow: 1,
         flexDirection: "column",
-        justifyContent: "center",
+        justifyContent: "center"
     },
     listTitleLink: {
         color: theme.palette.text.secondary,
         marginBottom: theme.spacing(0.5),
-        "&:hover": {
-            color: theme.palette.primary.main
-        }
+        "&:hover": { color: theme.palette.primary.main }
     }
 }));
 
-module.exports = ({ open, onClose, ...props }) => {
+module.exports = ({
+    open, onClose, ...props
+}) => {
     const classes = useStyles();
     return (
         <Drawer open={open} onClose={onClose} {...props}>
