@@ -19,7 +19,7 @@ module.exports = ({
                         onClick={(_, lecture) => setLecture(lecture)} />
                 ))}
             </List>
-            <ClassSelector open={lecture} lecture={lecture}
+            <ClassSelector open={!!lecture} lecture={lecture}
                 timeTable={timeTable} setTimeTable={setTimeTable}
                 onClose={() => setLecture(null)} />
         </>
