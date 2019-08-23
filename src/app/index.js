@@ -1,11 +1,15 @@
 const React = require("react");
-const { useState } = React;
+const {
+    useState, useEffect
+} = React;
 
 const { makeStyles } = require("@material-ui/core/styles");
 
 const CssBaseline = require("@material-ui/core/CssBaseline").default;
 const Grid = require("@material-ui/core/Grid").default;
 const Paper = require("@material-ui/core/Paper").default;
+
+const jsonApi = require("./api.js");
 
 const AppBar = require("./appbar.js");
 const Drawer = require("./drawer.js");
@@ -26,66 +30,18 @@ const useStyles = makeStyles(theme => ({
     timeTableTile: { padding: theme.spacing(2) }
 }));
 
-const subjects = [{
-    name: "수학",
-    lectures: [{
-        name: "수학 IV",
-        subject: "수학",
-        classes: [{ times: [{
-            weekday: 1,
-            start: 1,
-            end: 2
-        }, {
-            weekday: 4,
-            start: 5,
-            end: 6
-        }] }, { times: [{
-            weekday: 2,
-            start: 1,
-            end: 2
-        }, {
-            weekday: 3,
-            start: 1,
-            end: 2
-        }] }, { times: [{
-            weekday: 3,
-            start: 3,
-            end: 4
-        }, {
-            weekday: 5,
-            start: 1,
-            end: 2
-        }] }]
-    }, {
-        name: "미적분학 I",
-        subject: "수학",
-        classes: [{ times: [{
-            weekday: 1,
-            start: 3,
-            end: 4
-        }, {
-            weekday: 3,
-            start: 3,
-            end: 4
-        }] }, { times: [{
-            weekday: 2,
-            start: 3,
-            end: 4
-        }, {
-            weekday: 3,
-            start: 1,
-            end: 2
-        }] }]
-    }]
-}];
-
 const App = () => {
     const classes = useStyles();
 
+    const [subjects, setSubjects] = useState([]);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isClassDialogOpen, setIsClassDialogOpen] = useState(false);
     const [isAssignmentDialogOpen, setIsAssignmentDialogOpen] = useState(false);
     const [timeTable, setTimeTable] = useState([]);
+
+    useEffect(() => { (async () => {
+        setSubjects((await jsonApi.findAll("subjects", { include: "lectures.classes" })).data);
+    })(); }, []);
 
     return (
         <div className={classes.root}>

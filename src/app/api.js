@@ -25,17 +25,8 @@ jsonApi.define("comment", {
     }
 });
 
-jsonApi.define("time", {
-    weekday: "",
-    start: "",
-    end: ""
-});
-
 jsonApi.define("class", {
-    times: {
-        jsonApi: "hasMany",
-        type: "time"
-    },
+    times: "",
     lecture: {
         jsonApi: "hasOne",
         type: "lecture"
@@ -56,7 +47,10 @@ jsonApi.define("class", {
 
 jsonApi.define("lecture", {
     name: "",
-    subject: "subject",
+    subject: {
+        jsonApi: "hasOne",
+        type: "subject"
+    },
     classes: {
         jsonApi: "hasMany",
         type: "class"
