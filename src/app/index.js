@@ -8,6 +8,7 @@ const { makeStyles } = require("@material-ui/core/styles");
 const CssBaseline = require("@material-ui/core/CssBaseline").default;
 const Grid = require("@material-ui/core/Grid").default;
 const Paper = require("@material-ui/core/Paper").default;
+const CircularProgress = require("@material-ui/core/CircularProgress").default;
 
 const jsonApi = require("./api.js");
 
@@ -25,22 +26,35 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(1),
         minHeight: `calc(100vh - ${theme.spacing(8)}px)`
     },
-    fullHeightPaper: { height: "100%" },
-    fullHeightTimeTable: { height: "100%" },
-    timeTableTile: { padding: theme.spacing(2) }
+    fullPaper: {
+        height: "100%",
+    },
+    fullTimeTable: { height: "100%" },
+    timeTableTile: { padding: theme.spacing(2) },
+    leftGrid: {
+        position: "relative",
+    },
+    circularProgress: {
+        position: "absolute",
+        top: "calc(50% - 20px)",
+        left: "calc(50% - 20px)"
+    }
 }));
 
 const App = () => {
     const classes = useStyles();
 
     const [subjects, setSubjects] = useState([]);
+    const [isSubjectLoading, setIsSubjectLoading] = useState(true);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isClassDialogOpen, setIsClassDialogOpen] = useState(false);
     const [isAssignmentDialogOpen, setIsAssignmentDialogOpen] = useState(false);
     const [timeTable, setTimeTable] = useState([]);
 
     useEffect(() => { (async () => {
+        setIsSubjectLoading(true);
         setSubjects((await jsonApi.findAll("subjects", { include: "lectures.classes" })).data);
+        setIsSubjectLoading(false);
     })(); }, []);
 
     return (
@@ -62,14 +76,15 @@ const App = () => {
                     author: "조성빈"
                 }} />
             <Grid container spacing={3} className={classes.mainArea}>
-                <Grid item xs={3}>
-                    <Paper className={classes.fullHeightPaper}>
+                <Grid item xs={3} className={classes.leftGrid}>
+                    {isSubjectLoading && <CircularProgress className={classes.circularProgress} />}
+                    <Paper className={classes.fullPaper}>
                         <LectureSelector subjects={subjects} timeTable={timeTable} setTimeTable={setTimeTable} />
                     </Paper>
                 </Grid>
                 <Grid item xs={9}>
-                    <div className={classes.fullHeightPaper}>
-                        <TimeTable className={classes.fullHeightTimeTable} timeTable={timeTable} />
+                    <div className={classes.fullPaper}>
+                        <TimeTable className={classes.fullTimeTable} timeTable={timeTable} />
                     </div>
                 </Grid>
             </Grid>
