@@ -34,53 +34,66 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const timeTable = [{
-    name: "중국어 II",
-    subject: "외국어",
-    times: [{
-        weekday: 1,
-        start: 2,
-        end: 2
+const subjects = [{
+    name: "수학",
+    lectures: [{
+        name: "수학 IV",
+        subject: "수학",
+        classes: [{
+            times: [{
+                weekday: 1,
+                start: 1,
+                end: 2
+            }, {
+                weekday: 4,
+                start: 5,
+                end: 6
+            }]
+        }, {
+            times: [{
+                weekday: 2,
+                start: 1,
+                end: 2
+            }, {
+                weekday: 3,
+                start: 1,
+                end: 2
+            }]
+        }, {
+            times: [{
+                weekday: 3,
+                start: 3,
+                end: 4
+            }, {
+                weekday: 5,
+                start: 1,
+                end: 2
+            }]
+        }]
     }, {
-        weekday: 4,
-        start: 1,
-        end: 1
-    }],
-}, {
-    name: "지구과학 II",
-    subject: "지학",
-    times: [{
-        weekday: 1,
-        start: 3,
-        end: 4
-    }, {
-        weekday: 4,
-        start: 5,
-        end: 5
-    }]
-}, {
-    name: "객체지향프로",
-    subject: "정보",
-    times: [{
-        weekday: 1,
-        start: 5,
-        end: 5
-    }, {
-        weekday: 2,
-        start: 1,
-        end: 2
-    }]
-}, {
-    name: "수학 IV",
-    subject: "수학",
-    times: [{
-        weekday: 1,
-        start: 6,
-        end: 7
-    }, {
-        weekday: 3,
-        start: 1,
-        end: 2
+        name: "미적분학 I",
+        subject: "수학",
+        classes: [{
+            times: [{
+                weekday: 1,
+                start: 3,
+                end: 4
+            }, {
+                weekday: 3,
+                start: 3,
+                end: 4
+            }]
+        }, {
+            times: [{
+                weekday: 2,
+                start: 3,
+                end: 4
+            }, {
+                weekday: 3,
+                start: 1,
+                end: 2
+            }]
+        }]
     }]
 }];
 
@@ -90,6 +103,7 @@ const App = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isClassDialogOpen, setIsClassDialogOpen] = useState(false);
     const [isAssignmentDialogOpen, setIsAssignmentDialogOpen] = useState(false);
+    const [timeTable, setTimeTable] = useState([]);
 
     return (
         <div className={classes.root}>
@@ -112,10 +126,7 @@ const App = () => {
             <Grid container spacing={3} className={classes.mainArea}>
                 <Grid item xs={3}>
                     <Paper className={classes.fullHeightPaper}>
-                        <LectureSelector subjects={[
-                            { name: "수학", lectures: ["수학 I", "수학 II", "수학 III"] },
-                            { name: "물리", lectures: ["물리 I", "물리 II"] }
-                        ]} />
+                        <LectureSelector subjects={subjects} timeTable={timeTable} setTimeTable={setTimeTable} />
                     </Paper>
                 </Grid>
                 <Grid item xs={9}>

@@ -4,28 +4,33 @@ const { useState } = React;
 const FormControl = require("@material-ui/core/FormControl").default;
 const InputLabel = require("@material-ui/core/InputLabel").default;
 const Select = require("@material-ui/core/Select").default;
+const MenuItem = require("@material-ui/core/MenuItem").default;
 
 const ClosableDialog = require("./closable-dialog.js");
 
 const debug = arg => console.log(arg) || arg;
 
-module.exports = ({ lecture, currentLectures, setCurrentLectures, ...props }) => {
-    const [classNumber, setClassNumber] = useState(1);
+module.exports = ({ lecture, timeTable, setTimeTable, ...props }) => {
+    const [classNumber, setClassNumber] = useState(0);
 
     return (
         <ClosableDialog title="분반 선택" onConfirm={() => {
-            if(currentLectures.reduce((acc, [currentLecture]) => acc || currentLecture == lecture, false)) { return; }
-            setCurrentLectures(currentLectures => debug([...currentLectures, [lecture, classNumber]]));
+            if(timeTable.reduce((acc, { name }) => acc || name == lecture.name, false)) { return; }
+            setTimeTable(timeTable => debug([...timeTable, {
+                name: lecture.name,
+                subject: lecture.subject,
+                times: lecture.classes[classNumber].times
+            }]));
             props.onClose();
         }} {...props}>
             <FormControl>
                 <InputLabel>분반</InputLabel>
                 <Select
-                    native
                     value={classNumber}
                     onChange={e => setClassNumber(parseInt(e.target.value))}>
-                    <option value={1}>1분반</option>
-                    <option value={2}>2분반</option>
+                    {lecture && lecture.classes && lecture.classes.map((_, idx) => (
+                        <MenuItem key={idx} value={idx}>{idx + 1}분반</MenuItem>
+                    ))}
                 </Select>
             </FormControl>
         </ClosableDialog>
