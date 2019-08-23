@@ -8,19 +8,17 @@ const MenuItem = require("@material-ui/core/MenuItem").default;
 
 const ClosableDialog = require("./closable-dialog.js");
 
-const debug = arg => console.log(arg) || arg;
-
 module.exports = ({ lecture, timeTable, setTimeTable, ...props }) => {
     const [classNumber, setClassNumber] = useState(0);
 
     return (
         <ClosableDialog title="분반 선택" onConfirm={() => {
             if(timeTable.reduce((acc, { name }) => acc || name == lecture.name, false)) { return; }
-            setTimeTable(timeTable => debug([...timeTable, {
+            setTimeTable(timeTable => [...timeTable, {
                 name: lecture.name,
                 subject: lecture.subject,
                 times: lecture.classes[classNumber].times
-            }]));
+            }]);
             props.onClose();
         }} {...props}>
             <FormControl>
