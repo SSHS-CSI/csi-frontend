@@ -14,22 +14,22 @@ const ExpandMoreIcon = require("@material-ui/icons/ExpandMore").default;
 const useStyles = makeStyles(theme => ({ nested: { paddingLeft: theme.spacing(4) } }));
 
 module.exports = ({
-    name, lectures, onClick, ...props
+    subject, onClick, ...props
 }) => {
     const classes = useStyles();
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <>
-            <ListItem button onClick={e => setIsOpen(isOpen => !isOpen)} {...props} divider>
-                <ListItemText primary={name} />
+            <ListItem button onClick={() => setIsOpen(isOpen => !isOpen)} {...props} divider>
+                <ListItemText primary={subject.name} />
                 {isOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             </ListItem>
             <Collapse in={isOpen} timeout="auto" unmountOnExit>
                 <List disablePadding>
-                    {lectures.map(lecture => (
-                        <ListItem button key={lecture} onClick={onClick && (e => onClick(e, lecture))} className={classes.nested} divider>
-                            <ListItemText primary={lecture} />
+                    {subject.lectures.map(lecture => (
+                        <ListItem button key={lecture.name} onClick={onClick && (e => onClick(e, lecture))} className={classes.nested} divider>
+                            <ListItemText primary={lecture.name} />
                         </ListItem>
                     ))}
                 </List>

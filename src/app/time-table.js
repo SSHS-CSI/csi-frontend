@@ -7,7 +7,7 @@ const TimeTableCell = require("./time-table-cell.js");
 module.exports = ({
     timeTable, ...props
 }) => (
-    <CssGrid rows={7} columns={5} gap={8} {...props}>
+    <CssGrid rows={8} columns={6} gap={8} {...props}>
         {timeTable.map(({
             name, subject, times
         }) => times.map(({
