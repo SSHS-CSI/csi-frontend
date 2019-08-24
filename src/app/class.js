@@ -1,4 +1,5 @@
 const React = require("react");
+const { useState } = React;
 
 const { makeStyles } = require("@material-ui/core/styles");
 
@@ -7,11 +8,16 @@ const TableBody = require("@material-ui/core/TableBody").default;
 const TableCell = require("@material-ui/core/TableCell").default;
 const TableRow = require("@material-ui/core/TableRow").default;
 const Chip = require("@material-ui/core/Chip").default;
+const Typography = require("@material-ui/core/Typography").default;
+const Dialog = require("@material-ui/core/Dialog").default;
+const DialogTitle = require("@material-ui/core/DialogTitle").default;
 
 const FaceIcon = require("@material-ui/icons/Face").default;
 const SchoolIcon = require("@material-ui/icons/School").default;
+const AddIcon = require("@material-ui/icons/Add").default;
 
 const ClosableDialog = require("./closable-dialog.js");
+const AssignmentAdder = require("./assignment-adder.js");
 
 const useStyles = makeStyles(theme => ({ chip: { margin: theme.spacing(0.5) } }));
 
@@ -19,6 +25,9 @@ module.exports = ({
     teacher, students, assignments, onTeacherClick, onStudentClick, onAssignmentClick, ...props
 }) => {
     const classes = useStyles();
+    const [isAssignmentAdderOpen, setIsAssignmentAdderOpen] = useState(false);
+    // const [isTempOpen, setIsTempOpen] = useState(true);
+
     return (
         <ClosableDialog scroll="paper" {...props}>
             <Table>
@@ -47,7 +56,7 @@ module.exports = ({
                     </TableRow>
                     <TableRow>
                         <TableCell component="th" scope="row"
-                            rowSpan={assignments.length + 1}>
+                            rowSpan={assignments.length + 2}>
                             과제
                         </TableCell>
                         <TableCell variant="head">제목</TableCell>
@@ -63,8 +72,17 @@ module.exports = ({
                             </TableCell>
                         </TableRow>
                     ))}
+                    <TableRow hover onClick={e => setIsAssignmentAdderOpen(true)}>
+                        <TableCell>
+                            <AddIcon fontSize="inherit" viewBox="2 -1.5 26 22.5" />
+                          과제 추가
+                        </TableCell>
+                        <TableCell></TableCell>
+                    </TableRow>
                 </TableBody>
             </Table>
+            <AssignmentAdder title="과제 추가" open={isAssignmentAdderOpen}
+                onClose={() => setIsAssignmentAdderOpen(false)} />
         </ClosableDialog>
     );
 };
