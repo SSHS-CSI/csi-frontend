@@ -15,11 +15,13 @@ module.exports = ({
         <>
             <List disablePadding {...props}>
                 {subjects.map(subject => (
-                    <Subject subject={subject} key={subject.name}
+                    <Subject
+                        subject={subject} key={subject.name}
                         onClick={(_, lecture) => setLecture(lecture)} />
                 ))}
             </List>
-            <ClassSelector open={!!lecture} lecture={lecture}
+            <ClassSelector
+                open={!!lecture} lecture={lecture}
                 timeTable={timeTable} setTimeTable={setTimeTable}
                 onClose={() => setLecture(null)} />
         </>

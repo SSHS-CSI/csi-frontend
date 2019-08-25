@@ -14,18 +14,19 @@ module.exports = ({
     const [classNumber, setClassNumber] = useState(0);
 
     return (
-        <ClosableDialog title="분반 선택" onConfirm={() => {
-            const idx = timeTable.findIndex(({ name }) => name == lecture.name);
-            const time = {
-                name: lecture.name,
-                subject: lecture.subject,
-                times: lecture.classes[classNumber].times
-            };
+        <ClosableDialog
+            title="분반 선택" onConfirm={() => {
+                const idx = timeTable.findIndex(({ name }) => name == lecture.name);
+                const time = {
+                    name: lecture.name,
+                    subject: lecture.subject,
+                    times: lecture.classes[classNumber].times
+                };
 
-            if(idx != -1 && timeTable[idx].times === lecture.classes[classNumber].times) { props.onClose(); return; }
-            setTimeTable(timeTable => idx != -1 ? [...timeTable.slice(0, idx), time, ...timeTable.slice(idx + 1)] : [...timeTable, time]);
-            props.onClose();
-        }} {...props}>
+                if(idx != -1 && timeTable[idx].times === lecture.classes[classNumber].times) { props.onClose(); return; }
+                setTimeTable(timeTable => idx != -1 ? [...timeTable.slice(0, idx), time, ...timeTable.slice(idx + 1)] : [...timeTable, time]);
+                props.onClose();
+            }} {...props}>
             <FormControl>
                 <InputLabel>분반</InputLabel>
                 <Select

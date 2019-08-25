@@ -28,7 +28,8 @@ module.exports = ({
                             교사
                         </TableCell>
                         <TableCell colSpan={2}>
-                            <Chip icon={<SchoolIcon />} label={teacher}
+                            <Chip
+                                icon={<SchoolIcon />} label={teacher}
                                 onClick={onTeacherClick}
                                 className={classes.chip} />
                         </TableCell>
@@ -39,14 +40,16 @@ module.exports = ({
                         </TableCell>
                         <TableCell colSpan={2}>
                             {students.map((student, idx) => (
-                                <Chip label={student} icon={<FaceIcon />}
+                                <Chip
+                                    label={student} icon={<FaceIcon />}
                                     key={student} className={classes.chip}
                                     onClick={onStudentClick && (e => onStudentClick(e, idx))} />
                             ))}
                         </TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell component="th" scope="row"
+                        <TableCell
+                            component="th" scope="row"
                             rowSpan={assignments.length + 1}>
                             과제
                         </TableCell>
