@@ -8,9 +8,6 @@ const TableBody = require("@material-ui/core/TableBody").default;
 const TableCell = require("@material-ui/core/TableCell").default;
 const TableRow = require("@material-ui/core/TableRow").default;
 const Chip = require("@material-ui/core/Chip").default;
-const Typography = require("@material-ui/core/Typography").default;
-const Dialog = require("@material-ui/core/Dialog").default;
-const DialogTitle = require("@material-ui/core/DialogTitle").default;
 
 const FaceIcon = require("@material-ui/icons/Face").default;
 const SchoolIcon = require("@material-ui/icons/School").default;
@@ -26,7 +23,6 @@ module.exports = ({
 }) => {
     const classes = useStyles();
     const [isAssignmentAdderOpen, setIsAssignmentAdderOpen] = useState(false);
-    // const [isTempOpen, setIsTempOpen] = useState(true);
 
     return (
         <ClosableDialog scroll="paper" {...props}>
@@ -72,10 +68,10 @@ module.exports = ({
                             </TableCell>
                         </TableRow>
                     ))}
-                    <TableRow hover onClick={e => setIsAssignmentAdderOpen(true)}>
+                    <TableRow hover onClick={() => setIsAssignmentAdderOpen(true)}>
                         <TableCell>
-                            <AddIcon fontSize="inherit" viewBox="2 -1.5 26 22.5" />
-                          과제 추가
+                            <AddIcon fontSize="inherit" viewBox="0 0 20 20" />
+                            {" "}과제 추가
                         </TableCell>
                         <TableCell></TableCell>
                     </TableRow>
