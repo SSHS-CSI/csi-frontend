@@ -143,5 +143,28 @@ module.exports = {
         "rest-spread-spacing": "error",
         "template-curly-spacing": "error",
         "yield-star-spacing": ["error", "before"],
+        "react/no-unknown-property": "error",
+        "react/self-closing-comp": "error",
+        "react/sort-comp": "error",
+        "react/jsx-boolean-value": "error",
+        "react/jsx-closing-bracket-location": ["error", "after-props"],
+        "react/jsx-closing-tag-location": "error",
+        "react/jsx-curly-newline": "error",
+        "react/jsx-curly-spacing": "error",
+        "react/jsx-equals-spacing": "error",
+        "react/jsx-first-prop-new-line": "error",
+        "react/jsx-indent": "error",
+        "react/jsx-indent-props": "error",
+        "react/jsx-props-no-multi-spaces": "error",
+        "react/jsx-tag-spacing": ["error", { beforeClosing: "never" }],
+        "react/jsx-wrap-multilines": ["error", {
+            declaration: "parens-new-line",
+            assignment: "parens-new-line",
+            return: "parens-new-line",
+            arrow: "parens-new-line",
+            condition: "parens-new-line",
+            logical: "parens-new-line",
+            prop: "parens-new-line"
+        }]
     }
 };
