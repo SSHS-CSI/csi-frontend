@@ -19,7 +19,10 @@ module.exports = ({
             const time = {
                 name: lecture.name,
                 subject: lecture.subject,
-                times: lecture.classes[classNumber].times
+                times: lecture.classes[classNumber].times,
+                teacher: lecture.classes[classNumber].teacher,
+                students: lecture.classes[classNumber].students,
+                assignments: lecture.assignments
             };
 
             if(idx != -1 && timeTable[idx].times === lecture.classes[classNumber].times) { props.onClose(); return; }
