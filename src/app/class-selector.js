@@ -10,7 +10,7 @@ const MenuItem = require("@material-ui/core/MenuItem").default;
 
 const ClosableDialog = require("./closable-dialog.js");
 
-const useStyles = makeStyles({ paper: { width: "20%" } });
+const useStyles = makeStyles({ paper: { minWidth: 180 } });
 
 module.exports = ({
     lecture, timeTable, setTimeTable, ...props
