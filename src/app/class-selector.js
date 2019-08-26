@@ -22,7 +22,7 @@ module.exports = ({
         <ClosableDialog
             title="분반 선택" onConfirm={() => {
                 const idx = timeTable.findIndex(({ name }) => name == lecture.name);
-                const time = {
+                const currentClass = {
                     name: lecture.name,
                     subject: lecture.subject,
                     times: lecture.classes[classNumber].times,
@@ -32,7 +32,7 @@ module.exports = ({
                 };
 
                 if(idx != -1 && timeTable[idx].times === lecture.classes[classNumber].times) { props.onClose(); return; }
-                setTimeTable(timeTable => idx != -1 ? [...timeTable.slice(0, idx), time, ...timeTable.slice(idx + 1)] : [...timeTable, time]);
+                setTimeTable(timeTable => idx != -1 ? [...timeTable.slice(0, idx), currentClass, ...timeTable.slice(idx + 1)] : [...timeTable, currentClass]);
                 props.onClose();
             }} classes={{ paper: classes.paper }} {...props}>
             <FormControl>
