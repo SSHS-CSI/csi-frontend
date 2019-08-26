@@ -31,7 +31,8 @@ module.exports = ({ ...props }) => {
                                 과제명 입력
                             </TableCell>
                             <TableCell>
-                                <Input placeholder="과제명 입력" autoFocus={true} value={assigmentName}
+                                <Input
+                                    placeholder="과제명 입력" autoFocus value={assigmentName}
                                     onChange={e => setAssignmentName(e.target.value)} />
                             </TableCell>
                         </TableRow>
@@ -40,7 +41,8 @@ module.exports = ({ ...props }) => {
                                 상세 내용
                             </TableCell>
                             <TableCell>
-                                <Input placeholder="상세 내용 입력" multiline={true} value={assignmentContent}
+                                <Input
+                                    placeholder="상세 내용 입력" multiline value={assignmentContent}
                                     onChange={e => setAssignmentContent(e.target.value)} />
                             </TableCell>
                         </TableRow>
@@ -58,8 +60,7 @@ module.exports = ({ ...props }) => {
                                     label="Date picker"
                                     value={selectedDate}
                                     onChange={date => setSelectedDate(date)}
-                                    KeyboardButtonProps={{ "aria-label": "change date" }}
-                                />
+                                    KeyboardButtonProps={{ "aria-label": "change date" }} />
                             </TableCell>
                         </TableRow>
                         <TableRow>
@@ -71,8 +72,7 @@ module.exports = ({ ...props }) => {
                                     label="Time picker"
                                     value={selectedDate}
                                     onChange={date => setSelectedDate(date)}
-                                    KeyboardButtonProps={{ "aria-label": "change time" }}
-                                />
+                                    KeyboardButtonProps={{ "aria-label": "change time" }} />
                             </TableCell>
                         </TableRow>
                     </TableBody>

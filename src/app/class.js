@@ -45,14 +45,16 @@ module.exports = ({
                         </TableCell>
                         <TableCell colSpan={2}>
                             {Array.isArray(students) && students.map((student, idx) => (
-                                <Chip label={student} icon={<FaceIcon />}
+                                <Chip
+                                    label={student} icon={<FaceIcon />}
                                     key={student} className={classes.chip}
                                     onClick={onStudentClick && (e => onStudentClick(e, idx))} />
                             ))}
                         </TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell component="th" scope="row"
+                        <TableCell
+                            component="th" scope="row"
                             rowSpan={Array.isArray(assignments) && assignments.length + 2}>
                             과제
                         </TableCell>
@@ -74,11 +76,12 @@ module.exports = ({
                             <AddIcon fontSize="inherit" viewBox="0 0 20 20" />
                             {" "}과제 추가
                         </TableCell>
-                        <TableCell></TableCell>
+                        <TableCell />
                     </TableRow>
                 </TableBody>
             </Table>
-            <AssignmentAdder title="과제 추가" open={isAssignmentAdderOpen}
+            <AssignmentAdder
+                title="과제 추가" open={isAssignmentAdderOpen}
                 onClose={() => setIsAssignmentAdderOpen(false)} />
         </ClosableDialog>
     );

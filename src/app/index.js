@@ -139,12 +139,13 @@ const App = () => {
                 {isEditMode ? <ClearIcon /> : <EditIcon />}
             </Fab>
             <Grid container spacing={3} className={classes.mainArea}>
-                {isEditMode &&
-                 <Grid item xs={3}>
-                     <Paper className={classes.fullHeightPaper}>
-                         <LectureSelector subjects={subjects} timeTable={timeTable} setTimeTable={setTimeTable} />
-                     </Paper>
-                 </Grid>}
+                {isEditMode && (
+                    <Grid item xs={3}>
+                        <Paper className={classes.fullHeightPaper}>
+                            <LectureSelector subjects={subjects} timeTable={timeTable} setTimeTable={setTimeTable} />
+                        </Paper>
+                    </Grid>
+                )}
                 <Grid item xs={isEditMode ? 9 : 12}>
                     <div className={classes.fullHeightPaper}>
                         <TimeTable className={classes.fullHeightTimeTable} timeTable={timeTable} />

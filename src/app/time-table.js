@@ -17,18 +17,22 @@ module.exports = ({
                     name, times, subject, teacher, students
                 }) => times.map(({
                     weekday, start, end
-                }) => <TimeTableCell key={name + weekday + start + end} name={name}
-                    weekday={weekday} start={start} end={end} subject={subject}
-                    onClick={() => setCurrentClass({
-                        name,
-                        times,
-                        subject,
-                        teacher,
-                        students
-                    })} />))}
+                }) => (
+                    <TimeTableCell
+                        key={name + weekday + start + end} name={name}
+                        weekday={weekday} start={start} end={end} subject={subject}
+                        onClick={() => setCurrentClass({
+                            name,
+                            times,
+                            subject,
+                            teacher,
+                            students
+                        })} />
+                )))}
             </CssGrid>
-            <Class open={!!currentClass} title={currentClass && currentClass.name} {...currentClass}
-                onClose={() => setCurrentClass(null)}/>
+            <Class
+                open={!!currentClass} title={currentClass && currentClass.name} {...currentClass}
+                onClose={() => setCurrentClass(null)} />
         </>
     );
 };
