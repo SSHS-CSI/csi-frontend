@@ -55,7 +55,7 @@ module.exports = ({
                     <TableRow>
                         <TableCell
                             component="th" scope="row"
-                            rowSpan={Array.isArray(assignments) && assignments.length + 2}>
+                            rowSpan={Array.isArray(assignments) ? assignments.length + 2 : 2}>
                             과제
                         </TableCell>
                         <TableCell variant="head">제목</TableCell>
