@@ -19,14 +19,16 @@ module.exports = ({
     const classes = useStyles();
 
     return (
-        <ClosableDialog
-            title="분반 선택" onConfirm={() => {
-                const idx = timeTable.findIndex(({ name }) => name == lecture.name);
-                const time = {
-                    name: lecture.name,
-                    subject: lecture.subject,
-                    times: lecture.classes[classNumber].times
-                };
+        <ClosableDialog title="분반 선택" onConfirm={() => {
+            const idx = timeTable.findIndex(({ name }) => name == lecture.name);
+            const time = {
+                name: lecture.name,
+                subject: lecture.subject,
+                times: lecture.classes[classNumber].times,
+                teacher: lecture.classes[classNumber].teacher,
+                students: lecture.classes[classNumber].students,
+                assignments: lecture.assignments
+            };
 
                 if(idx != -1 && timeTable[idx].times === lecture.classes[classNumber].times) { props.onClose(); return; }
                 setTimeTable(timeTable => idx != -1 ? [...timeTable.slice(0, idx), time, ...timeTable.slice(idx + 1)] : [...timeTable, time]);

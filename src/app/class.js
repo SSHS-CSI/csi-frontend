@@ -44,9 +44,8 @@ module.exports = ({
                             학생
                         </TableCell>
                         <TableCell colSpan={2}>
-                            {students.map((student, idx) => (
-                                <Chip
-                                    label={student} icon={<FaceIcon />}
+                            {Array.isArray(students) && students.map((student, idx) => (
+                                <Chip label={student} icon={<FaceIcon />}
                                     key={student} className={classes.chip}
                                     onClick={onStudentClick && (e => onStudentClick(e, idx))} />
                             ))}
@@ -54,13 +53,13 @@ module.exports = ({
                     </TableRow>
                     <TableRow>
                         <TableCell component="th" scope="row"
-                            rowSpan={assignments.length + 2}>
+                            rowSpan={Array.isArray(assignments) && assignments.length + 2}>
                             과제
                         </TableCell>
                         <TableCell variant="head">제목</TableCell>
                         <TableCell variant="head">마감</TableCell>
                     </TableRow>
-                    {assignments.map(({
+                    {Array.isArray(assignments) && assignments.map(({
                         title, deadline
                     }, idx) => (
                         <TableRow hover onClick={e => onAssignmentClick(e, idx)} key={title}>

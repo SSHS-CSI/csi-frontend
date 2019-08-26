@@ -5,6 +5,8 @@ const Color = require("color");
 
 const Typography = require("@material-ui/core/Typography").default;
 const Card = require("@material-ui/core/Card").default;
+const CardActionArea = require("@material-ui/core/CardActionArea").default;
+const CardContent = require("@material-ui/core/CardContent").default;
 
 const CssGridCell = require("./css-grid-cell.js");
 
@@ -40,19 +42,28 @@ const useStyles = makeStyles(theme => ({
         top: theme.spacing(0.5),
         height: theme.spacing(0.5),
         borderRadius: theme.spacing(0.5)
-    })
+    }),
+    click: {
+        width: "100%",
+        height: "100%",
+        textAlign: "center"
+    }
 }));
 
 module.exports = ({
-    weekday, start, end, name, ...props
+    weekday, start, end, name, onClick, ...props
 }) => {
     const classes = useStyles(props);
     return (
         <CssGridCell left={weekday} top={start} height={end - start + 1}>
             <Card className={classes.cell}>
-                <Typography variant="body1">
-                    {name}
-                </Typography>
+                <CardActionArea className={classes.click} onClick={onClick}>
+                    <CardContent>
+                        <Typography variant="body1">
+                            {name}
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
                 <div className={classes.bar} />
             </Card>
         </CssGridCell>

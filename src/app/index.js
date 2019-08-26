@@ -6,6 +6,10 @@ const { makeStyles } = require("@material-ui/core/styles");
 const CssBaseline = require("@material-ui/core/CssBaseline").default;
 const Grid = require("@material-ui/core/Grid").default;
 const Paper = require("@material-ui/core/Paper").default;
+const Fab = require("@material-ui/core/Fab").default;
+
+const EditIcon = require("@material-ui/icons/Edit").default;
+const ClearIcon = require("@material-ui/icons/Clear").default;
 
 const AppBar = require("./appbar.js");
 const Drawer = require("./drawer.js");
@@ -15,7 +19,10 @@ const LectureSelector = require("./lecture-selector.js");
 const TimeTable = require("./time-table.js");
 
 const useStyles = makeStyles(theme => ({
-    root: { padding: theme.spacing(2) },
+    root: {
+        display: "relative",
+        padding: theme.spacing(2)
+    },
     mainArea: {
         marginTop: theme.spacing(6),
         padding: theme.spacing(1),
@@ -23,7 +30,12 @@ const useStyles = makeStyles(theme => ({
     },
     fullHeightPaper: { height: "100%" },
     fullHeightTimeTable: { height: "100%" },
-    timeTableTile: { padding: theme.spacing(2) }
+    timeTableTile: { padding: theme.spacing(2) },
+    editIcon: {
+        position: "absolute",
+        bottom: theme.spacing(4),
+        right: theme.spacing(4)
+    }
 }));
 
 const subjects = [{
@@ -31,31 +43,46 @@ const subjects = [{
     lectures: [{
         name: "수학 IV",
         subject: "수학",
-        classes: [{ times: [{
-            weekday: 1,
-            start: 1,
-            end: 2
+        classes: [{
+            times: [{
+                weekday: 1,
+                start: 1,
+                end: 2
+            }, {
+                weekday: 4,
+                start: 5,
+                end: 6
+            }],
+            teacher: "노창균",
+            students: ["조성빈", "신기준", "권현우"],
+            assignments: []
         }, {
-            weekday: 4,
-            start: 5,
-            end: 6
-        }] }, { times: [{
-            weekday: 2,
-            start: 1,
-            end: 2
+            times: [{
+                weekday: 2,
+                start: 1,
+                end: 2
+            }, {
+                weekday: 3,
+                start: 1,
+                end: 2
+            }],
+            teacher: "김지애",
+            students: ["박정환", "정현석", "박정민"],
+            assignments: []
         }, {
-            weekday: 3,
-            start: 1,
-            end: 2
-        }] }, { times: [{
-            weekday: 3,
-            start: 3,
-            end: 4
-        }, {
-            weekday: 5,
-            start: 1,
-            end: 2
-        }] }]
+            times: [{
+                weekday: 3,
+                start: 3,
+                end: 4
+            }, {
+                weekday: 5,
+                start: 1,
+                end: 2
+            }],
+            teacher: "노창균",
+            students: ["김성민", "이창민", "김시환"],
+            assignments: []
+        }]
     }, {
         name: "미적분학 I",
         subject: "수학",
@@ -83,7 +110,8 @@ const App = () => {
     const classes = useStyles();
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const [isClassDialogOpen, setIsClassDialogOpen] = useState(true);
+    const [isEditMode, setIsEditMode] = useState(true);
+    const [isClassDialogOpen, setIsClassDialogOpen] = useState(false);
     const [isAssignmentDialogOpen, setIsAssignmentDialogOpen] = useState(false);
     const [timeTable, setTimeTable] = useState([]);
 
@@ -107,13 +135,17 @@ const App = () => {
                     deadline: new Date("Sun Jul 30 2019"),
                     author: "조성빈"
                 }} />
+            <Fab color="primary" className={classes.editIcon} onClick={() => setIsEditMode(isEditMode => !isEditMode)}>
+                {isEditMode ? <ClearIcon /> : <EditIcon />}
+            </Fab>
             <Grid container spacing={3} className={classes.mainArea}>
-                <Grid item xs={3}>
-                    <Paper className={classes.fullHeightPaper}>
-                        <LectureSelector subjects={subjects} timeTable={timeTable} setTimeTable={setTimeTable} />
-                    </Paper>
-                </Grid>
-                <Grid item xs={9}>
+                {isEditMode &&
+                 <Grid item xs={3}>
+                     <Paper className={classes.fullHeightPaper}>
+                         <LectureSelector subjects={subjects} timeTable={timeTable} setTimeTable={setTimeTable} />
+                     </Paper>
+                 </Grid>}
+                <Grid item xs={isEditMode ? 9 : 12}>
                     <div className={classes.fullHeightPaper}>
                         <TimeTable className={classes.fullHeightTimeTable} timeTable={timeTable} />
                     </div>
