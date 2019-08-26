@@ -1,6 +1,8 @@
 const React = require("react");
 const { useState } = React;
 
+const { makeStyles } = require("@material-ui/core/styles");
+
 const FormControl = require("@material-ui/core/FormControl").default;
 const InputLabel = require("@material-ui/core/InputLabel").default;
 const Select = require("@material-ui/core/Select").default;
@@ -8,10 +10,13 @@ const MenuItem = require("@material-ui/core/MenuItem").default;
 
 const ClosableDialog = require("./closable-dialog.js");
 
+const useStyles = makeStyles({ paper: { minWidth: 180 } });
+
 module.exports = ({
     lecture, timeTable, setTimeTable, ...props
 }) => {
     const [classNumber, setClassNumber] = useState(0);
+    const classes = useStyles();
 
     return (
         <ClosableDialog
@@ -26,7 +31,7 @@ module.exports = ({
                 if(idx != -1 && timeTable[idx].times === lecture.classes[classNumber].times) { props.onClose(); return; }
                 setTimeTable(timeTable => idx != -1 ? [...timeTable.slice(0, idx), time, ...timeTable.slice(idx + 1)] : [...timeTable, time]);
                 props.onClose();
-            }} {...props}>
+            }} classes={{ paper: classes.paper }} {...props}>
             <FormControl>
                 <InputLabel>분반</InputLabel>
                 <Select

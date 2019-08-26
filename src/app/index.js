@@ -83,7 +83,7 @@ const App = () => {
     const classes = useStyles();
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const [isClassDialogOpen, setIsClassDialogOpen] = useState(false);
+    const [isClassDialogOpen, setIsClassDialogOpen] = useState(true);
     const [isAssignmentDialogOpen, setIsAssignmentDialogOpen] = useState(false);
     const [timeTable, setTimeTable] = useState([]);
 

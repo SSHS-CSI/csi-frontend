@@ -10,7 +10,6 @@ module.exports = ({
     subjects, timeTable, setTimeTable, ...props
 }) => {
     const [lecture, setLecture] = useState(null);
-
     return (
         <>
             <List disablePadding {...props}>
