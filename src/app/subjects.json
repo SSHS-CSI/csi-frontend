@@ -15,7 +15,12 @@
             }],
             teacher: "노창균",
             students: ["조성빈", "신기준", "권현우"],
-            assignments: []
+            assignments: [{
+                title: "연습문제 1",
+                content: "연습문제 1의 3번 문제부터 16번 문제까지 풀기",
+                deadline: new Date("Sun Jul 30 2019"),
+                author: "조성빈"
+            }]
         }, {
             times: [{
                 weekday: 2,
@@ -28,7 +33,12 @@
             }],
             teacher: "김지애",
             students: ["박정환", "정현석", "박정민"],
-            assignments: []
+            assignments: [{
+                title: "연습문제 1",
+                content: "연습문제 1의 3번 문제부터 16번 문제까지 풀기",
+                deadline: new Date("Sun Jul 30 2019"),
+                author: "조성빈"
+            }]
         }, {
             times: [{
                 weekday: 3,

@@ -14,7 +14,7 @@ module.exports = ({
         <>
             <CssGrid rows={8} columns={6} gap={8} {...props}>
                 {timeTable.map(({
-                    name, times, subject, teacher, students
+                    name, times, subject, teacher, students, assignments
                 }) => times.map(({
                     weekday, start, end
                 }) => (
@@ -26,7 +26,8 @@ module.exports = ({
                             times,
                             subject,
                             teacher,
-                            students
+                            students,
+                            assignments
                         })} />
                 )))}
             </CssGrid>
