@@ -18,8 +18,6 @@ const Assignment = require("./assignment.js");
 const LectureSelector = require("./lecture-selector.js");
 const TimeTable = require("./time-table.js");
 
-const subjects = require("./subjects.json");
-
 const useStyles = makeStyles(theme => ({
     root: {
         display: "relative",
@@ -39,6 +37,74 @@ const useStyles = makeStyles(theme => ({
         right: theme.spacing(4)
     }
 }));
+
+const subjects = [{
+    name: "수학",
+    lectures: [{
+        name: "수학 IV",
+        subject: "수학",
+        classes: [{
+            times: [{
+                weekday: 1,
+                start: 1,
+                end: 2
+            }, {
+                weekday: 4,
+                start: 5,
+                end: 6
+            }],
+            teacher: "노창균",
+            students: ["조성빈", "신기준", "권현우"],
+            assignments: []
+        }, {
+            times: [{
+                weekday: 2,
+                start: 1,
+                end: 2
+            }, {
+                weekday: 3,
+                start: 1,
+                end: 2
+            }],
+            teacher: "김지애",
+            students: ["박정환", "정현석", "박정민"],
+            assignments: []
+        }, {
+            times: [{
+                weekday: 3,
+                start: 3,
+                end: 4
+            }, {
+                weekday: 5,
+                start: 1,
+                end: 2
+            }],
+            teacher: "노창균",
+            students: ["김성민", "이창민", "김시환"],
+            assignments: []
+        }]
+    }, {
+        name: "미적분학 I",
+        subject: "수학",
+        classes: [{ times: [{
+            weekday: 1,
+            start: 3,
+            end: 4
+        }, {
+            weekday: 3,
+            start: 3,
+            end: 4
+        }] }, { times: [{
+            weekday: 2,
+            start: 3,
+            end: 4
+        }, {
+            weekday: 3,
+            start: 1,
+            end: 2
+        }] }]
+    }]
+}];
 
 const App = () => {
     const classes = useStyles();
@@ -73,16 +139,22 @@ const App = () => {
                 {isEditMode ? <ClearIcon /> : <EditIcon />}
             </Fab>
             <Grid container spacing={3} className={classes.mainArea}>
-                {isEditMode && (
+                {isEditMode ? (
                     <Grid item xs={3}>
                         <Paper className={classes.fullHeightPaper}>
                             <LectureSelector subjects={subjects} timeTable={timeTable} setTimeTable={setTimeTable} />
                         </Paper>
                     </Grid>
+                ):(
+                    <Grid item xs={3}>
+                        <Paper className={classes.fullHeightPaper}>
+                            
+                        </Paper>
+                    </Grid>
                 )}
-                <Grid item xs={isEditMode ? 9 : 12}>
+                <Grid item xs={isEditMode ? 9 : 9}>
                     <div className={classes.fullHeightPaper}>
-                        <TimeTable className={classes.fullHeightTimeTable} timeTable={timeTable} />
+                        <TimeTable className={classes.fullHeightTimeTable} timeTable={timeTable} setTimeTable={setTimeTable}/>
                     </div>
                 </Grid>
             </Grid>
