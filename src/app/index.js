@@ -110,7 +110,7 @@ const App = () => {
     const classes = useStyles();
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const [isEditMode, setIsEditMode] = useState(true);
+    const [isEditMode, setIsEditMode] = useState(false);
     const [isClassDialogOpen, setIsClassDialogOpen] = useState(false);
     const [isAssignmentDialogOpen, setIsAssignmentDialogOpen] = useState(false);
     const [timeTable, setTimeTable] = useState([]);
@@ -118,23 +118,8 @@ const App = () => {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar onMenuClick={() => setIsDrawerOpen(true)} />
+            <AppBar onMenuClick={() => setIsDrawerOpen(true)} EditMode = {isEditMode}/>
             <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
-            <Class
-                title="객체지향" open={isClassDialogOpen}
-                onClose={() => setIsClassDialogOpen(false)} teacher="박미영"
-                students={["조성빈", "신기준", "권현우"]} assignments={[{
-                    title: "연습문제 1",
-                    deadline: new Date("Sun Jul 30 2019")
-                }]} />
-            <Assignment
-                open={isAssignmentDialogOpen} title="과제" onClose={() => setIsAssignmentDialogOpen(false)}
-                assignment={{
-                    title: "연습문제 1",
-                    content: "연습문제 1의 3번 문제부터 16번 문제까지 풀기",
-                    deadline: new Date("Sun Jul 30 2019"),
-                    author: "조성빈"
-                }} />
             <Fab color="primary" className={classes.editIcon} onClick={() => setIsEditMode(isEditMode => !isEditMode)}>
                 {isEditMode ? <ClearIcon /> : <EditIcon />}
             </Fab>
@@ -148,11 +133,11 @@ const App = () => {
                 ):(
                     <Grid item xs={3}>
                         <Paper className={classes.fullHeightPaper}>
-                            
+
                         </Paper>
                     </Grid>
                 )}
-                <Grid item xs={isEditMode ? 9 : 9}>
+                <Grid item xs={9}>
                     <div className={classes.fullHeightPaper}>
                         <TimeTable className={classes.fullHeightTimeTable} timeTable={timeTable} setTimeTable={setTimeTable}/>
                     </div>

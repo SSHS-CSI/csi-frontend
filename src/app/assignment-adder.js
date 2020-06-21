@@ -16,7 +16,7 @@ const {
 
 const ClosableDialog = require("./closable-dialog.js");
 
-module.exports = ({ ...props }) => {
+module.exports = ({ setTimeTable, ...props }) => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [assigmentName, setAssignmentName] = useState("");
     const [assignmentContent, setAssignmentContent] = useState("");

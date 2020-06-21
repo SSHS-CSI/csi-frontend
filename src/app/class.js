@@ -19,7 +19,7 @@ const AssignmentAdder = require("./assignment-adder.js");
 const useStyles = makeStyles(theme => ({ chip: { margin: theme.spacing(0.5) } }));
 
 module.exports = ({
-    teacher, students, assignments, onTeacherClick, onStudentClick, onAssignmentClick, ...props
+    teacher, students, assignments, onTeacherClick, onStudentClick, onAssignmentClick, timeTable, setTimeTable, ...props
 }) => {
     const classes = useStyles();
     const [isAssignmentAdderOpen, setIsAssignmentAdderOpen] = useState(false);
@@ -81,7 +81,7 @@ module.exports = ({
                 </TableBody>
             </Table>
             <AssignmentAdder
-                title="과제 추가" open={isAssignmentAdderOpen}
+                title="과제 추가" open={isAssignmentAdderOpen} setTimeTable={setTimeTable}
                 onClose={() => setIsAssignmentAdderOpen(false)} />
         </ClosableDialog>
     );

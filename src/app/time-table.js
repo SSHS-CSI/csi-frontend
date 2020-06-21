@@ -6,7 +6,7 @@ const TimeTableCell = require("./time-table-cell.js");
 const Class = require("./class.js");
 
 module.exports = ({
-    timeTable, ...props
+    timeTable, setTimeTable, ...props
 }) => {
     const [currentClass, setCurrentClass] = useState(null);
 
@@ -14,7 +14,7 @@ module.exports = ({
         <>
             <CssGrid rows={8} columns={6} gap={8} {...props}>
                 {timeTable.map(({
-                    name, times, subject, teacher, students, assignments
+                    name, times, subject, teacher, students
                 }) => times.map(({
                     weekday, start, end
                 }) => (
@@ -26,13 +26,12 @@ module.exports = ({
                             times,
                             subject,
                             teacher,
-                            students,
-                            assignments
+                            students
                         })} />
                 )))}
             </CssGrid>
             <Class
-                open={!!currentClass} title={currentClass && currentClass.name} {...currentClass}
+                open={!!currentClass} title={currentClass && currentClass.name} {...currentClass} timeTable={timeTable} setTimeTable={setTimeTable}
                 onClose={() => setCurrentClass(null)} />
         </>
     );
