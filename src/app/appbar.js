@@ -11,6 +11,8 @@ const Typography = require("@material-ui/core/Typography").default;
 const Button = require("@material-ui/core/Button").default;
 const TextField = require("@material-ui/core/TextField").default;
 const MoreHorizIcon = require("@material-ui/icons/MoreHoriz").default;
+const EditIcon = require("@material-ui/icons/Edit").default;
+const SaveIcon = require("@material-ui/icons/Save").default;
 
 const ClosableDialog = require("./closable-dialog.js");
 
@@ -20,11 +22,12 @@ const useStyles = makeStyles(theme => ({
     loginDialog: {
         display: "flex",
         flexDirection: "column"
-    }
+    },
+    editIcon: { marginRight: theme.spacing() }
 }));
 
 module.exports = ({
-    onMenuClick, EditMode, ...props
+    onMenuClick, setIsEditMode, isEditMode, ...props
 }) => {
     const classes = useStyles();
     const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false);
@@ -36,7 +39,9 @@ module.exports = ({
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" className={classes.title}>Jirung World</Typography>
-                {EditMode && <MoreHorizIcon></MoreHorizIcon>}
+                <IconButton edge="end" color="inherit" className={classes.editIcon} onClick={() => setIsEditMode(isEditMode => !isEditMode)}>
+                    {isEditMode ? <SaveIcon /> : <EditIcon />}
+                </IconButton>
                 <Button color="inherit" onClick={() => setIsLoginDialogOpen(true)}>로그인</Button>
                 <ClosableDialog title="로그인" open={isLoginDialogOpen}  onClose={() => setIsLoginDialogOpen(false)}>
                     <div className={classes.loginDialog}>

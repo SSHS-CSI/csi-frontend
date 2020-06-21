@@ -118,11 +118,8 @@ const App = () => {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar onMenuClick={() => setIsDrawerOpen(true)} EditMode = {isEditMode}/>
+            <AppBar onMenuClick={() => setIsDrawerOpen(true)}  setIsEditMode={setIsEditMode} isEditMode={isEditMode}/>
             <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
-            <Fab color="primary" className={classes.editIcon} onClick={() => setIsEditMode(isEditMode => !isEditMode)}>
-                {isEditMode ? <ClearIcon /> : <EditIcon />}
-            </Fab>
             <Grid container spacing={3} className={classes.mainArea}>
                 {isEditMode ? (
                     <Grid item xs={3}>
