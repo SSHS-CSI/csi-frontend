@@ -8,6 +8,7 @@ const Grid = require("@material-ui/core/Grid").default;
 const Paper = require("@material-ui/core/Paper").default;
 const Fab = require("@material-ui/core/Fab").default;
 
+const AddIcon = require("@material-ui/icons/Add").default;
 const EditIcon = require("@material-ui/icons/Edit").default;
 const ClearIcon = require("@material-ui/icons/Clear").default;
 
@@ -28,13 +29,16 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(1),
         minHeight: `calc(100vh - ${theme.spacing(8)}px)`
     },
-    fullHeightPaper: { height: "100%" },
+    fullHeightPaper: {
+        height: "100%",
+        position: "relative"
+    },
     fullHeightTimeTable: { height: "100%" },
     timeTableTile: { padding: theme.spacing(2) },
-    editIcon: {
+    plusIcon: {
         position: "absolute",
-        bottom: theme.spacing(4),
-        right: theme.spacing(4)
+        bottom: theme.spacing(2),
+        left: theme.spacing(2)
     }
 }));
 
@@ -111,8 +115,6 @@ const App = () => {
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isEditMode, setIsEditMode] = useState(false);
-    const [isClassDialogOpen, setIsClassDialogOpen] = useState(false);
-    const [isAssignmentDialogOpen, setIsAssignmentDialogOpen] = useState(false);
     const [timeTable, setTimeTable] = useState([]);
     const [currentClass, setCurrentClass] = useState(null);
 <<<<<<< HEAD
@@ -125,6 +127,8 @@ const App = () => {
             <CssBaseline />
             <AppBar onMenuClick={() => setIsDrawerOpen(true)}  setIsEditMode={setIsEditMode} isEditMode={isEditMode}/>
             <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
+            
+ 
             <Grid container spacing={3} className={classes.mainArea}>
                 {isEditMode ? (
                     <Grid item xs={3}>
@@ -135,9 +139,12 @@ const App = () => {
                 ):(
                     <Grid item xs={3}>
                         <Paper className={classes.fullHeightPaper}>
-                        <Class
-                            open={!!currentClass} title={currentClass && currentClass.name} {...currentClass} timeTable={timeTable} setTimeTable={setTimeTable}
-                            onClose={() => setCurrentClass(null)} />
+                            <Class
+                                open={!!currentClass} title={currentClass && currentClass.name} {...currentClass} timeTable={timeTable} setTimeTable={setTimeTable}
+                                onClose={() => setCurrentClass(null)} />
+                            <Fab color="primary" className={classes.plusIcon} onClick={() => setIsEditMode(isEditMode => !isEditMode)} size="small">
+                                {isEditMode ? <ClearIcon /> : <AddIcon />}
+                            </Fab>
                         </Paper>
                     </Grid>
                 )}
