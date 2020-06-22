@@ -12,6 +12,8 @@ const Chip = require("@material-ui/core/Chip").default;
 
 const FaceIcon = require("@material-ui/icons/Face").default;
 const SchoolIcon = require("@material-ui/icons/School").default;
+const AddIcon = require("@material-ui/icons/Add").default;
+const InfoIcon = require("@material-ui/icons/Info").default;
 
 const AssignmentAdder = require("./assignment-adder.js");
 
@@ -69,7 +71,7 @@ module.exports = ({
                             </TableCell>
                         </TableRow>
                     ))}
-                    
+
                 </TableBody>
             </Table>
             <AssignmentAdder

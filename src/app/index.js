@@ -126,8 +126,8 @@ const App = () => {
             <CssBaseline />
             <AppBar onMenuClick={() => setIsDrawerOpen(true)}  setIsEditMode={setIsEditMode} isEditMode={isEditMode}/>
             <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
-            
- 
+
+
             <Grid container spacing={3} className={classes.mainArea}>
                 {isEditMode ? (
                     <Grid item xs={3}>
