@@ -114,6 +114,8 @@ const App = () => {
     const [isClassDialogOpen, setIsClassDialogOpen] = useState(false);
     const [isAssignmentDialogOpen, setIsAssignmentDialogOpen] = useState(false);
     const [timeTable, setTimeTable] = useState([]);
+    const [currentClass, setCurrentClass] = useState(null);
+
 
     return (
         <div className={classes.root}>
@@ -136,7 +138,7 @@ const App = () => {
                 )}
                 <Grid item xs={9}>
                     <div className={classes.fullHeightPaper}>
-                        <TimeTable className={classes.fullHeightTimeTable} timeTable={timeTable} setTimeTable={setTimeTable}/>
+                        <TimeTable className={classes.fullHeightTimeTable} timeTable={timeTable} setTimeTable={setTimeTable} currentClass={currentClass} setCurrentClass={setCurrentClass}/>
                     </div>
                 </Grid>
             </Grid>
