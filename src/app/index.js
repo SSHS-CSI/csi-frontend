@@ -117,10 +117,6 @@ const App = () => {
     const [isEditMode, setIsEditMode] = useState(false);
     const [timeTable, setTimeTable] = useState([]);
     const [currentClass, setCurrentClass] = useState(null);
-<<<<<<< HEAD
-
-=======
->>>>>>> 2264bcb1d4623e914fd20ec0cb102a8e340fad29
 
     return (
         <div className={classes.root}>

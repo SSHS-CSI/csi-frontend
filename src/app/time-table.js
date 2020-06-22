@@ -6,14 +6,8 @@ const TimeTableCell = require("./time-table-cell.js");
 const Class = require("./class.js");
 
 module.exports = ({
-<<<<<<< HEAD
-    timeTable, setTimeTable, currentClass, setCurrentClass, ...props
-}) => {
-=======
     timeTable, setTimeTable, currentClass, setCurrentClass,...props
 }) => {
-
->>>>>>> 2264bcb1d4623e914fd20ec0cb102a8e340fad29
 
     return (
         <>
