@@ -13,6 +13,7 @@ const TextField = require("@material-ui/core/TextField").default;
 const MoreHorizIcon = require("@material-ui/icons/MoreHoriz").default;
 const EditIcon = require("@material-ui/icons/Edit").default;
 const SaveIcon = require("@material-ui/icons/Save").default;
+import HelpIcon from '@material-ui/icons/Help';
 
 const ClosableDialog = require("./closable-dialog.js");
 
