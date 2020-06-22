@@ -12,18 +12,15 @@ const Chip = require("@material-ui/core/Chip").default;
 
 const FaceIcon = require("@material-ui/icons/Face").default;
 const SchoolIcon = require("@material-ui/icons/School").default;
-const AddIcon = require("@material-ui/icons/Add").default;
 
-const ClosableDialog = require("./closable-dialog.js");
 const AssignmentAdder = require("./assignment-adder.js");
 
 const useStyles = makeStyles(theme => ({ chip: { margin: theme.spacing(0.5) } }));
 
 module.exports = ({
-    teacher, students, assignments, onTeacherClick, onStudentClick, onAssignmentClick, timeTable, setTimeTable, ...props
+    teacher, students, assignments, onTeacherClick, onStudentClick, onAssignmentClick, timeTable, setTimeTable, isAssignmentAdderOpen, setIsAssignmentAdderOpen, ...props
 }) => {
     const classes = useStyles();
-    const [isAssignmentAdderOpen, setIsAssignmentAdderOpen] = useState(false);
 
     return (
         <List scroll="paper" {...props}>
@@ -72,13 +69,7 @@ module.exports = ({
                             </TableCell>
                         </TableRow>
                     ))}
-                    <TableRow hover onClick={() => setIsAssignmentAdderOpen(true)}>
-                        <TableCell>
-                            <AddIcon fontSize="inherit" viewBox="0 0 20 20" />
-                            {" "}과제 추가
-                        </TableCell>
-                        <TableCell />
-                    </TableRow>
+                    
                 </TableBody>
             </Table>
             <AssignmentAdder

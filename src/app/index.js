@@ -7,6 +7,7 @@ const CssBaseline = require("@material-ui/core/CssBaseline").default;
 const Grid = require("@material-ui/core/Grid").default;
 const Paper = require("@material-ui/core/Paper").default;
 const Fab = require("@material-ui/core/Fab").default;
+const List = require("@material-ui/core/List").default;
 
 const AddIcon = require("@material-ui/icons/Add").default;
 const EditIcon = require("@material-ui/icons/Edit").default;
@@ -115,8 +116,10 @@ const App = () => {
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isEditMode, setIsEditMode] = useState(false);
+    //const [isClassSelect, setClassSelect] = useState(false);
     const [timeTable, setTimeTable] = useState([]);
     const [currentClass, setCurrentClass] = useState(null);
+    const [isAssignmentAdderOpen, setIsAssignmentAdderOpen] = useState(false);
 
     return (
         <div className={classes.root}>
@@ -135,12 +138,14 @@ const App = () => {
                 ):(
                     <Grid item xs={3}>
                         <Paper className={classes.fullHeightPaper}>
-                            <Class
-                                open={!!currentClass} title={currentClass && currentClass.name} {...currentClass} timeTable={timeTable} setTimeTable={setTimeTable}
-                                onClose={() => setCurrentClass(null)} />
-                            <Fab color="primary" className={classes.plusIcon} onClick={() => setIsEditMode(isEditMode => !isEditMode)} size="small">
-                                {isEditMode ? <ClearIcon /> : <AddIcon />}
-                            </Fab>
+                                    <Class
+                                    open={!!currentClass} title={currentClass && currentClass.name} {...currentClass} timeTable={timeTable} setTimeTable={setTimeTable}
+                                    onClose={() => setCurrentClass(null)}
+                                    isAssignmentAdderOpen={isAssignmentAdderOpen}
+                                    setIsAssignmentAdderOpen={setIsAssignmentAdderOpen} />
+                                    <Fab color="primary" className={classes.plusIcon} onClick={() => setIsAssignmentAdderOpen(isAssignmentAdderOpen => !isAssignmentAdderOpen)} size="small">
+                                        {isAssignmentAdderOpen ? <ClearIcon/>: <AddIcon/>}
+                                    </Fab>
                         </Paper>
                     </Grid>
                 )}
