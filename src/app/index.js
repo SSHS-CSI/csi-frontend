@@ -115,7 +115,10 @@ const App = () => {
     const [isAssignmentDialogOpen, setIsAssignmentDialogOpen] = useState(false);
     const [timeTable, setTimeTable] = useState([]);
     const [currentClass, setCurrentClass] = useState(null);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2264bcb1d4623e914fd20ec0cb102a8e340fad29
 
     return (
         <div className={classes.root}>
@@ -132,7 +135,9 @@ const App = () => {
                 ):(
                     <Grid item xs={3}>
                         <Paper className={classes.fullHeightPaper}>
-
+                        <Class
+                            open={!!currentClass} title={currentClass && currentClass.name} {...currentClass} timeTable={timeTable} setTimeTable={setTimeTable}
+                            onClose={() => setCurrentClass(null)} />
                         </Paper>
                     </Grid>
                 )}
