@@ -6,9 +6,9 @@ const TimeTableCell = require("./time-table-cell.js");
 const Class = require("./class.js");
 
 module.exports = ({
-    timeTable, setTimeTable, ...props
+    timeTable, setTimeTable, currentClass, setCurrentClass,...props
 }) => {
-    const [currentClass, setCurrentClass] = useState(null);
+
 
     return (
         <>
@@ -30,9 +30,6 @@ module.exports = ({
                         })} />
                 )))}
             </CssGrid>
-            <Class
-                open={!!currentClass} title={currentClass && currentClass.name} {...currentClass} timeTable={timeTable} setTimeTable={setTimeTable}
-                onClose={() => setCurrentClass(null)} />
         </>
     );
 };

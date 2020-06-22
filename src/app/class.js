@@ -3,6 +3,7 @@ const { useState } = React;
 
 const { makeStyles } = require("@material-ui/core/styles");
 
+const List = require("@material-ui/core/List").default;
 const Table = require("@material-ui/core/Table").default;
 const TableBody = require("@material-ui/core/TableBody").default;
 const TableCell = require("@material-ui/core/TableCell").default;
@@ -25,7 +26,7 @@ module.exports = ({
     const [isAssignmentAdderOpen, setIsAssignmentAdderOpen] = useState(false);
 
     return (
-        <ClosableDialog scroll="paper" {...props}>
+        <List scroll="paper" {...props}>
             <Table>
                 <TableBody>
                     <TableRow>
@@ -83,6 +84,6 @@ module.exports = ({
             <AssignmentAdder
                 title="과제 추가" open={isAssignmentAdderOpen} setTimeTable={setTimeTable}
                 onClose={() => setIsAssignmentAdderOpen(false)} />
-        </ClosableDialog>
+        </List>
     );
 };
