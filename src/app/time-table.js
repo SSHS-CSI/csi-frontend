@@ -9,7 +9,6 @@ module.exports = ({
     timeTable, setTimeTable, currentClass, setCurrentClass,...props
 }) => {
 
-
     return (
         <>
             <CssGrid rows={8} columns={6} gap={8} {...props}>
