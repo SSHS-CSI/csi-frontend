@@ -18,6 +18,7 @@ const Drawer = require("./drawer.js");
 const Class = require("./class.js");
 const Assignment = require("./assignment.js");
 const LectureSelector = require("./lecture-selector.js");
+const AssignmentAdder = require("./assignment-adder.js");
 const TimeTable = require("./time-table.js");
 
 const useStyles = makeStyles(theme => ({
@@ -36,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     },
     fullHeightTimeTable: { height: "100%" },
     timeTableTile: { padding: theme.spacing(2) },
-    plusIcon: {
+    addIcon: {
         position: "absolute",
         bottom: theme.spacing(2),
         left: theme.spacing(2)
@@ -60,7 +61,7 @@ const subjects = [{
             }],
             teacher: "노창균",
             students: ["조성빈", "신기준", "권현우"],
-            assignments: []
+            assignments: [{title: "우왕", deadline: new Date()}]
         }, {
             times: [{
                 weekday: 2,
@@ -126,8 +127,6 @@ const App = () => {
             <CssBaseline />
             <AppBar onMenuClick={() => setIsDrawerOpen(true)}  setIsEditMode={setIsEditMode} isEditMode={isEditMode}/>
             <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
-
-
             <Grid container spacing={3} className={classes.mainArea}>
                 {isEditMode ? (
                     <Grid item xs={3}>
@@ -138,14 +137,16 @@ const App = () => {
                 ):(
                     <Grid item xs={3}>
                         <Paper className={classes.fullHeightPaper}>
-                                    <Class
-                                    open={!!currentClass} title={currentClass && currentClass.name} {...currentClass} timeTable={timeTable} setTimeTable={setTimeTable}
-                                    onClose={() => setCurrentClass(null)}
-                                    isAssignmentAdderOpen={isAssignmentAdderOpen}
-                                    setIsAssignmentAdderOpen={setIsAssignmentAdderOpen} />
-                                    <Fab color="primary" className={classes.plusIcon} onClick={() => setIsAssignmentAdderOpen(isAssignmentAdderOpen => !isAssignmentAdderOpen)} size="small">
-                                        {isAssignmentAdderOpen ? <ClearIcon/>: <AddIcon/>}
-                                    </Fab>
+                            <Class
+                                open={!!currentClass} title={currentClass && currentClass.name} {...currentClass}
+                                onClose={() => setCurrentClass(null)}
+                            />
+                            <Fab color="primary" className={classes.addIcon} onClick={() => setIsAssignmentAdderOpen(isAssignmentAdderOpen => !isAssignmentAdderOpen)} size="small">
+                                <AddIcon />
+                            </Fab>
+                            <AssignmentAdder
+                                title="과제 추가" open={isAssignmentAdderOpen} setTimeTable={setTimeTable}
+                                onClose={() => setIsAssignmentAdderOpen(false)} />
                         </Paper>
                     </Grid>
                 )}
