@@ -116,7 +116,7 @@ const App = () => {
 
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isEditMode, setIsEditMode] = useState(false);
-    //const [isClassSelect, setClassSelect] = useState(false);
+    // const [isClassSelect, setClassSelect] = useState(false);
     const [timeTable, setTimeTable] = useState([]);
     const [currentClass, setCurrentClass] = useState(null);
     const [isAssignmentAdderOpen, setIsAssignmentAdderOpen] = useState(false);
@@ -124,9 +124,8 @@ const App = () => {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar onMenuClick={() => setIsDrawerOpen(true)}  setIsEditMode={setIsEditMode} isEditMode={isEditMode}/>
+            <AppBar onMenuClick={() => setIsDrawerOpen(true)} setIsEditMode={setIsEditMode} isEditMode={isEditMode} />
             <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
-
 
             <Grid container spacing={3} className={classes.mainArea}>
                 {isEditMode ? (
@@ -135,23 +134,27 @@ const App = () => {
                             <LectureSelector subjects={subjects} timeTable={timeTable} setTimeTable={setTimeTable} />
                         </Paper>
                     </Grid>
-                ):(
+                ) : (
                     <Grid item xs={3}>
                         <Paper className={classes.fullHeightPaper}>
-                                    <Class
-                                    open={!!currentClass} title={currentClass && currentClass.name} {...currentClass} timeTable={timeTable} setTimeTable={setTimeTable}
-                                    onClose={() => setCurrentClass(null)}
-                                    isAssignmentAdderOpen={isAssignmentAdderOpen}
-                                    setIsAssignmentAdderOpen={setIsAssignmentAdderOpen} />
-                                    <Fab color="primary" className={classes.plusIcon} onClick={() => setIsAssignmentAdderOpen(isAssignmentAdderOpen => !isAssignmentAdderOpen)} size="small">
-                                        {isAssignmentAdderOpen ? <ClearIcon/>: <AddIcon/>}
-                                    </Fab>
+                            <Class
+                                open={!!currentClass} title={currentClass && currentClass.name} {...currentClass} timeTable={timeTable} setTimeTable={setTimeTable}
+                                onClose={() => setCurrentClass(null)}
+                                isAssignmentAdderOpen={isAssignmentAdderOpen}
+                                setIsAssignmentAdderOpen={setIsAssignmentAdderOpen} />
+                            <Fab
+                                color="primary"
+                                className={classes.plusIcon}
+                                onClick={() => setIsAssignmentAdderOpen(isAssignmentAdderOpen => !isAssignmentAdderOpen)}
+                                size="small">
+                                {isAssignmentAdderOpen ? <ClearIcon /> : <AddIcon />}
+                            </Fab>
                         </Paper>
                     </Grid>
                 )}
                 <Grid item xs={9}>
                     <div className={classes.fullHeightPaper}>
-                        <TimeTable className={classes.fullHeightTimeTable} timeTable={timeTable} setTimeTable={setTimeTable} currentClass={currentClass} setCurrentClass={setCurrentClass}/>
+                        <TimeTable className={classes.fullHeightTimeTable} timeTable={timeTable} setTimeTable={setTimeTable} currentClass={currentClass} setCurrentClass={setCurrentClass} />
                     </div>
                 </Grid>
             </Grid>

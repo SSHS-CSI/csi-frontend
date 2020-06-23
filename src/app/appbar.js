@@ -13,7 +13,7 @@ const TextField = require("@material-ui/core/TextField").default;
 const MoreHorizIcon = require("@material-ui/icons/MoreHoriz").default;
 const EditIcon = require("@material-ui/icons/Edit").default;
 const SaveIcon = require("@material-ui/icons/Save").default;
-import HelpIcon from '@material-ui/icons/Help';
+const HelpIcon = require("@material-ui/icons/Help").default;
 
 const ClosableDialog = require("./closable-dialog.js");
 
@@ -44,7 +44,7 @@ module.exports = ({
                     {isEditMode ? <SaveIcon /> : <EditIcon />}
                 </IconButton>
                 <Button color="inherit" onClick={() => setIsLoginDialogOpen(true)}>로그인</Button>
-                <ClosableDialog title="로그인" open={isLoginDialogOpen}  onClose={() => setIsLoginDialogOpen(false)}>
+                <ClosableDialog title="로그인" open={isLoginDialogOpen} onClose={() => setIsLoginDialogOpen(false)}>
                     <div className={classes.loginDialog}>
                         <TextField type="email" placeholder="Email" margin="normal" autoFocus />
                         <TextField type="password" placeholder="Password" margin="normal" />
