@@ -29,7 +29,7 @@ module.exports = ({
     title, teacher, students, assignments, onTeacherClick, onStudentClick, onAssignmentClick, timeTable, setTimeTable, isAssignmentAdderOpen, setIsAssignmentAdderOpen, ...props
 }) => {
     const classes = useStyles();
-
+    console.log(assignments);
     return (
         <List scroll="paper" {...props}>
             <Table>
@@ -87,12 +87,8 @@ module.exports = ({
                             </TableCell>
                         </TableRow>
                     ))}
-
                 </TableBody>
             </Table>
-            <AssignmentAdder
-                title="과제 추가" open={isAssignmentAdderOpen} setTimeTable={setTimeTable}
-                onClose={() => setIsAssignmentAdderOpen(false)} />
         </List>
     );
 };
