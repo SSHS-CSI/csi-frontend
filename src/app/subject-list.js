@@ -1,4 +1,4 @@
-[{
+module.exports = [{
     name: "수학",
     lectures: [{
         name: "수학 IV",
@@ -74,4 +74,4 @@
             end: 2
         }] }]
     }]
-}]
+}];
