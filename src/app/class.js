@@ -19,10 +19,8 @@ const IconButton = require("@material-ui/core/IconButton").default;
 const AssignmentAdder = require("./assignment-adder.js");
 
 const useStyles = makeStyles(theme => ({
-  chip: { margin: theme.spacing(0.5) },
-  InfoIcon: {
-      right: theme.spacing(2)
-  }
+    chip: { margin: theme.spacing(0.5) },
+    InfoIcon: { right: theme.spacing(2) }
 }));
 
 module.exports = ({
@@ -36,12 +34,12 @@ module.exports = ({
                 <TableBody>
                     <TableRow>
                         <TableCell align="center" component="th" scope="row" colSpan={2}>
-                        {title}
+                            {title}
                         </TableCell>
-                        <TableCell align="center" component="th" scope="row" >
-                        <IconButton edge="start" color="inherit" className={classes.InfoIcon}>
-                            <InfoIcon />
-                        </IconButton>
+                        <TableCell align="center" component="th" scope="row">
+                            <IconButton edge="start" color="inherit" className={classes.InfoIcon}>
+                                <InfoIcon />
+                            </IconButton>
                         </TableCell>
                     </TableRow>
                     <TableRow>
