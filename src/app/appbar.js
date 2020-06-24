@@ -10,10 +10,8 @@ const MenuIcon = require("@material-ui/icons/Menu").default;
 const Typography = require("@material-ui/core/Typography").default;
 const Button = require("@material-ui/core/Button").default;
 const TextField = require("@material-ui/core/TextField").default;
-const MoreHorizIcon = require("@material-ui/icons/MoreHoriz").default;
 const EditIcon = require("@material-ui/icons/Edit").default;
 const SaveIcon = require("@material-ui/icons/Save").default;
-const HelpIcon = require("@material-ui/icons/Help").default;
 
 const ClosableDialog = require("./closable-dialog.js");
 

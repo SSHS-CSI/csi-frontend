@@ -14,20 +14,36 @@ const FaceIcon = require("@material-ui/icons/Face").default;
 const SchoolIcon = require("@material-ui/icons/School").default;
 const AddIcon = require("@material-ui/icons/Add").default;
 const InfoIcon = require("@material-ui/icons/Info").default;
+const IconButton = require("@material-ui/core/IconButton").default;
 
 const AssignmentAdder = require("./assignment-adder.js");
 
-const useStyles = makeStyles(theme => ({ chip: { margin: theme.spacing(0.5) } }));
+const useStyles = makeStyles(theme => ({
+  chip: { margin: theme.spacing(0.5) },
+  InfoIcon: {
+      right: theme.spacing(2)
+  }
+}));
 
 module.exports = ({
-    teacher, students, assignments, onTeacherClick, onStudentClick, onAssignmentClick, timeTable, setTimeTable, isAssignmentAdderOpen, setIsAssignmentAdderOpen, ...props
+    title, teacher, students, assignments, onTeacherClick, onStudentClick, onAssignmentClick, timeTable, setTimeTable, isAssignmentAdderOpen, setIsAssignmentAdderOpen, ...props
 }) => {
     const classes = useStyles();
-
+    console.log(assignments);
     return (
         <List scroll="paper" {...props}>
             <Table>
                 <TableBody>
+                    <TableRow>
+                        <TableCell align="center" component="th" scope="row" colSpan={2}>
+                        {title}
+                        </TableCell>
+                        <TableCell align="center" component="th" scope="row" >
+                        <IconButton edge="start" color="inherit" className={classes.InfoIcon}>
+                            <InfoIcon />
+                        </IconButton>
+                        </TableCell>
+                    </TableRow>
                     <TableRow>
                         <TableCell component="th" scope="row">
                             교사
@@ -71,12 +87,8 @@ module.exports = ({
                             </TableCell>
                         </TableRow>
                     ))}
-
                 </TableBody>
             </Table>
-            <AssignmentAdder
-                title="과제 추가" open={isAssignmentAdderOpen} setTimeTable={setTimeTable}
-                onClose={() => setIsAssignmentAdderOpen(false)} />
         </List>
     );
 };

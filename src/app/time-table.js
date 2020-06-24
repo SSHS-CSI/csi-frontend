@@ -1,9 +1,7 @@
 const React = require("react");
-const { useState } = React;
 
 const CssGrid = require("./css-grid.js");
 const TimeTableCell = require("./time-table-cell.js");
-const Class = require("./class.js");
 
 module.exports = ({
     timeTable, setTimeTable, currentClass, setCurrentClass, ...props

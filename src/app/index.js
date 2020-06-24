@@ -7,16 +7,12 @@ const CssBaseline = require("@material-ui/core/CssBaseline").default;
 const Grid = require("@material-ui/core/Grid").default;
 const Paper = require("@material-ui/core/Paper").default;
 const Fab = require("@material-ui/core/Fab").default;
-const List = require("@material-ui/core/List").default;
 
 const AddIcon = require("@material-ui/icons/Add").default;
-const EditIcon = require("@material-ui/icons/Edit").default;
-const ClearIcon = require("@material-ui/icons/Clear").default;
 
 const AppBar = require("./appbar.js");
 const Drawer = require("./drawer.js");
 const Class = require("./class.js");
-const Assignment = require("./assignment.js");
 const LectureSelector = require("./lecture-selector.js");
 const AssignmentAdder = require("./assignment-adder.js");
 const TimeTable = require("./time-table.js");
